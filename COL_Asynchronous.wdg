@@ -1,0 +1,148 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : COL_Asynchronous
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x1873c8d803078c18
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  type_code : 31
+  p_codes :
+   -
+     internal_properties : CAAAAAgAAABJK68zicNycvsAm67Y44DZP2HEUDgRY6fTvi/EJDFnR4UoLgzr9Enh7C8fUHTCxS5jXnK8wDgw4rhnblMCzqxO5w8yQZ8Cfu5OSPjSOEAGlOVntqkMGcztekpboqFH9d7fkw3/fJ1rhdGUte4=
+     code : |1+
+      
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // STRUCTURES
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      
+      // Manage the callbacks
+      stCallback is Structure
+      	OnSuccess			is string						<Serialize = False>				// Procedure to run in case of success
+      	OnError 			is string						<Serialize = False>				// Procedure to run in case of error
+      	CustomData			is string						<Serialize = False>				// Personal data
+      END
+      
+      
+      CONSTANT
+      	// Type of error
+      	ERR_WLEXCEPTION		= 1
+      	ERR_WLERROR		= 2
+      	
+      	ERR_INCORRECT_STREAM 	= 3
+      	ERR_INTERNET	 	= 4
+      END
+     type : 720896
+  procedures :
+   -
+     name : CB
+     internal_properties : CAAAAAgAAACy3XeEaNSVnOamOTG4NOf4pxIDC5gqA51yuJl3x6BK3HImaowM9napvic4R3y/7b81Yr7+rBKJwOR9/EBcCsDU245PEf6ovtpV4oLvZ2h1M148LDMMItGKFTQ05XrKrvuHElgnz5FFmg90WjYFsjWwr3kYkIErBsmjYsR75LutVKHfdvu7aZyl7EOwYcT70wkRTjv/rUzv9aTVTZHCMLzarKQ/yA==
+     procedure_id : 1761972709321378840
+     type_code : 15
+     group : 4
+     code : |1-
+      // Summary: Creates a callback from the name of a procedure
+      // Syntax:
+      //[ <Result> = ] CB (<sProcedureName> is string [, <sErrorProcedureName> is string [, <CUSTOMDATA> is string]])
+      //
+      // Parameters:
+      //	sProcedureName (UNICODE string): Full name of the procedure
+      //	sErrorProcedureName (UNICODE string - default value=""): Name of the procedure to run if an error occurs
+      //	CUSTOMDATA (UNICODE string - default value=""): Custom data
+      // Return value:
+      // 	STCallback: Created callback
+      //
+      PROCEDURE PUBLIC CB(LOCAL sProcedureName is string, LOCAL sErrorProcedureName is string = "", LOCAL CUSTOMDATA is string = "")
+      
+      	T is stCallback
+      	
+      	T.OnSuccess 	= sProcedureName
+      	T.OnError 	= sErrorProcedureName
+      	T.CustomData 	= CUSTOMDATA
+      	
+      RESULT T
+     type : 458752
+   -
+     name : TriggerError
+     internal_properties : CAAAAAgAAAAmvNPxBx4iC7DEkdamUIHqQbV0jURENQaApzksdV5v9R+1WbsH9m7uvXUKocaKWXtg5I5EHQVKqTxt5KLorPMym3CvqHPP9yggE1HJS+aV3hvUO61u53Qi4GWvnFXGxspJCYmXfNmlRe7EP8OjTnftF/4rmuyPk+NTDdwFE18H6Uo8CST1Q1M0S15h8EOS2KH1ixzOoYtBPiprgoh+ojcCxQhJK/RybzJILVLuZTvhrHLYZza4xb6+9aX0oNyr0Q==
+     procedure_id : 1761972709321444376
+     type_code : 15
+     code : |1-
+      // Summary: Dispatches a non-fatal error toward the suitable error process
+      // Syntax:
+      //TriggerError (<stCallback> is STCallback, <nErrCode> is int [, <sErrMsg> is string])
+      //
+      // Parameters:
+      //	stCallback (STCallback): Initial callback
+      //	nErrCode (integer): Code of the error
+      //	sErrMsg (UNICODE string): Message of the error
+      // Return value:
+      // 	None
+      // Automatic process of exceptions:   run CASE EXCEPTION:
+      //
+      
+      PROCEDURE PRIVATE TriggerError(stCallback is stCallback, LOCAL nErrCode is int, LOCAL sErrMsg is string = ErrorInfo(errMessage))
+      
+      	// Error callback
+      	IF stCallback.OnError <> "" THEN			
+      		IF ThreadCurrent() IN ("", ".") THEN
+      			ExecuteProcess(stCallback.OnError, trtProcedure, (nErrCode), (sErrMsg), (stCallback.CustomData))	
+      		ELSE	
+      			ExecuteMainThread(stCallback.OnError, (nErrCode), (sErrMsg), (stCallback.CustomData))	
+      		END
+      	END	
+      	
+      CASE EXCEPTION:
+      	// Code called if the callback is not available anymore. 
+      	// This can occur if the callback is a window procedure and if the window is closed.
+      	Trace(ExceptionInfo)
+     type : 458752
+   -
+     name : TriggerException
+     internal_properties : CAAAAAgAAADv6Nx6gzeRtcWz72ZpZ/nK8ZB9BZ6zRL0VAiL9CdMW70UL4wiaYEJp35+qiYRBIR2ae+GBc44yFDIELrfG3YSfNStO6RScKL6LXLtictPBu4m9pAJE/sfQt9P8jFfPliglEhX7KdsaGzsvJ7LB0ofaiF8bytfjSi80FFZaW0GXbpvpEQzgUeCUotVpSa3KVEYC6l5HaxKHqz6RA7ClNZBwZBXFiHMWdL3DiGrifIWjqQRcVOtNueccN3Yuq6J13gP0fA==
+     procedure_id : 1761972709321509912
+     type_code : 15
+     code : |1-
+      // Summary: Dispatches an exception toward the suitable error process
+      // Syntax:
+      //TriggerException (<stCallback>, <nErrCode> is int [, <sErrMsg> is string])
+      //
+      // Parameters:
+      //	stCallback: Initial callback
+      //	nErrCode (integer): Code of the error
+      //	sErrMsg (ANSI string): Message of the error
+      // Return value:
+      // 	None
+      
+      PROCEDURE RESTRICTED TriggerException(stCallback is stCallback, LOCAL nErrCode is int, LOCAL sErrMsg is string = ExceptionInfo(errMessage))
+      
+      	// Error callback
+      	IF stCallback.OnError <> "" THEN		
+      		IF ThreadCurrent() IN ("", ".") THEN
+      			ExecuteProcess(stCallback.OnError, trtProcedure, (nErrCode), (sErrMsg), (stCallback.CustomData))	
+      		ELSE	
+      			ExecuteMainThread(stCallback.OnError, (nErrCode), (sErrMsg), (stCallback.CustomData))	
+      		END
+      	END	
+      	
+      CASE EXCEPTION:
+      	// Code called if the callback is not available anymore. 
+      	// This can occur if the callback is a window procedure and if the window is closed.
+      	Trace(ExceptionInfo)
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : COL_SansNom1
+resources :
+ string_res :
+  identifier : 0x15a3dbe4011aefb3
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

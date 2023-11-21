@@ -1,0 +1,1510 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : COL_RSSStream
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x1873c8d903248fd1
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  internal_properties : CAAAAAgAAABaOTvyBOgrfEP5TMEjm5ZzKQIHO9ZG8SPtYL3AnFP/6iTu9X47lOAnYr5EQSdU2LUaOTMx494+Y6w/2J3Mt4O1G/W0RaQE2ZsXVfDqh1BkjMvVWQ==
+  type_code : 31
+  p_codes :
+   -
+     internal_properties : CAAAAAgAAAB1NzpE6fHxlpWM3dvDqQBWIjPat2EH8xNENAWb8mIoBYfhOlHk3h3QWgbhoPTopqN26TFcPVAYys5RsWY8BBIfi1bgDfh7tagMgkYhDzQLRRi9xmW4PnxhmugnL0r1MnwlP3nHlybMV1AjBQDdIClnMY8w+cjcSI15/y5Qd8WOwc7SbXV3MIwiO0LMxETsiCJ+hCBGLo7ZuOMyCoKtaHBN5oq073PPm4jMRjSK7g==
+     code : |1+
+      
+      CONSTANT
+      	TAG_TITLE_OPEN = "<title>"
+      	TAG_TITLE_CLOSE = "</title>"
+      	
+      	TAG_DESCRIPTION_OPEN = "<description>"
+      	TAG_DESCRIPTION_CLOSE = "</description>"
+      	
+      	TAG_POST_OPEN = "<item>"
+      	TAG_POST_CLOSE = "</item>"
+      	
+      	TAG_DATE_OPEN = "<pubDate>"
+      	TAG_DATE_CLOSE = "</pubDate>"
+      	
+      	TAG_LINK_OPEN = "<link>"
+      	TAG_LINK_CLOSE = "</link>"
+      	
+      	EXCEPTION_MSG = "Incorrect RSS stream, check the address of the stream or the status of your connection."
+      	
+      	// Redirection tag
+      	TAG_REDIRECTION = "<meta http-equiv=""REFRESH"" content="""
+      	
+      	// HTTP code
+      	CODE_301 = 301
+      	CODE_302 = 302
+      	
+      	FORMAT_HTTP  = "http://"
+      	FORMAT_HTTPS = "https://"
+      	
+      	
+      	MAX_NB_POSTS = 10
+      END
+      
+      // Structure representing a post of a RSS stream
+      structPost is Structure
+      	sTitle       is string
+      	sDescription is string
+      	dtDateTime  is datetime
+      	sLink        is string
+      	sImage       is string
+      END
+      
+      // Structure representing an RSS stream
+      structRSSStream is Structure
+      	sTitle       is string
+      	sLink        is string
+      	sDescription is string
+      	bufImage     is Buffer
+      	sHTTPResult is string 
+      	arrPost    is array of structPost
+      END
+      
+      
+      // Error?
+      gbError is boolean = False
+      gsErrMsg is string
+      
+      
+      
+     type : 720896
+  procedures :
+   -
+     name : _extractTag
+     procedure_id : 1761972713618247633
+     type_code : 15
+     code : |1+
+      // Summary: Extract the value of the first tag found at the given position
+      
+      PROCEDURE PRIVATE _extractTag(LOCAL sContent, LOCAL sOpeningTag, LOCAL sClosingTag, LOCAL nPosition)
+      
+      // Variables
+      sValue        is string
+      nStartPosition is int
+      nEndPosition   is int
+      
+      // Searches for the start tag
+      nStartPosition = Position(sContent, sOpeningTag, nPosition, FromBeginning + IgnoreCase)
+      
+      // Searches for the end tag
+      IF nStartPosition <> 0 THEN
+      	nEndPosition = Position(sContent, sClosingTag, nStartPosition, FromBeginning + IgnoreCase)
+      	
+      	// Extracts the content from the tags
+      	sValue = sContent[[nStartPosition + Length(sOpeningTag) TO nEndPosition - 1]]
+      	
+      	sValue = NoSpace(sValue)
+      END
+      
+      // Formats the retrieved text
+      sValue = _formatCData(sValue)
+      
+      sValue = HTMLToText(XMLToText(sValue))
+      
+      RESULT sValue
+     type : 458752
+   -
+     name : _formatCData
+     procedure_id : 1761972713618313169
+     type_code : 15
+     code : |1+
+      // Summary: Removes the CData tags
+      
+      PROCEDURE PRIVATE _formatCData(LOCAL sContent)
+      
+      sContent = Replace(sContent, "<![CDATA[", "")
+      sContent = Replace(sContent, "]]>", "")
+      
+      RESULT sContent
+      
+     type : 458752
+   -
+     name : _dateConverted
+     internal_properties : CAAAAAgAAAAiog7G5ometvjQPxGUKiunwsnECsIYIFS9lDMXR9hgERi3/ffuu9mMSGV6cNoovUJSd/pssZuqxWzzEpgs3ljwordi+LDwfkbLnxvUcPOBj/Kgc5Qtrx7yfF1ZVCorvFiJhakYl6k63iAoX5ndY7+UIe7nu58l2wfiYEuybGrniGyC0x10QV5ZMzppnKthjBCde9yac3YZ1iP+IQ2/zi6Y/eDRJP8qvcPhXJkkXXnC5KiM150ETnDc29BfpNhQyTIl
+     procedure_id : 1761972713618378705
+     type_code : 15
+     code : |1+
+      
+      // Summary: Converts an RSS date into a WLanguage DateTime
+      
+      PROCEDURE PRIVATE _dateConverted(LOCAL sTagValue is string)
+      
+      dtDateTime is datetime
+      dtDateTime..Millisecond = "000"
+      
+      sHourOffset, sMinuteOffset are strings
+      sSignOffset is string
+      sMonthInAlpha is string
+      
+      
+      nDay is int
+      nMonth is int
+      nYear is int
+      nHour is int
+      nMinute is int
+      nSecond is int
+      
+      // DD-MM-YYYY HH:mm:SS format (13-07-2015 14:15:10)
+      IF MatchRegularExpression( StringToUTF8(sTagValue),StringToUTF8( "([0-9]{2,2})-([0-9]{2,2})-([0-9]{4,4}) ([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2})"),nDay, nMonth, nYear, nHour, nMinute, nSecond) THEN
+      	
+      	dtDateTime..Day = nDay
+      	dtDateTime..Month = nMonth
+      	dtDateTime..Year = nYear
+      	dtDateTime..Hour = nHour
+      	dtDateTime..Minute = nMinute
+      	dtDateTime..Second = nSecond
+      	
+      	// If the date time is valid, return it
+      	IF DateTimeValid(dtDateTime) THEN RESULT dtDateTime
+      	
+      END
+      
+      // YYYY-MM-DDTHH:mm:SS+01:00 format (2015-07-13T14:15:10+03:00)
+      IF MatchRegularExpression(StringToUTF8(sTagValue), StringToUTF8("([0-9]{4,4})-([0-9]{2,2})-([0-9]{2,2})T([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2})(\+|-)([0-9]{2,2}):([0-9]{2,2})"),nYear, nMonth, nDay, nHour, nMinute, nSecond, sSignOffset, sHourOffset, sMinuteOffset) THEN
+      	
+      	dtDateTime..Day = nDay
+      	dtDateTime..Month = nMonth
+      	dtDateTime..Year = nYear
+      	dtDateTime..Hour = nHour
+      	dtDateTime..Minute = nMinute
+      	dtDateTime..Second = nSecond
+      	
+      	// Adds the difference
+      	SWITCH sSignOffset
+      		CASE "+" : dtDateTime..Hour -= sHourOffset ; dtDateTime..Minute -= sMinuteOffset
+      		CASE "-" : dtDateTime..Hour += sHourOffset ; dtDateTime..Minute += sMinuteOffset			
+      	END
+      	// Switch back to local mode
+      	dtDateTime = DateTimeUTCToLocal(dtDateTime)
+      	// If the date time is valid, return it
+      	IF DateTimeValid(dtDateTime) THEN RESULT dtDateTime
+      	
+      END
+      
+      // Ddd, JJ Mmm YYYY HH:mm:SS +0100 format (Mon, 13 Jul 2015 14:15:10 +0300)
+      IF MatchRegularExpression(StringToUTF8(sTagValue), StringToUTF8("[a-zA-Z]{3,3}, ([0-9]{2,2}) ([a-zA-Z]{3,3}) ([0-9]{4,4}) ([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2}) (\+|-)([0-9]{2,2})([0-9]{2,2})"),nDay, sMonthInAlpha, nYear, nHour, nMinute, nSecond, sSignOffset, sHourOffset, sMinuteOffset) THEN
+      	
+      	dtDateTime..Day = nDay
+      	// Converts month from letters
+      	dtDateTime..Month = _MonthLetterToMonthInteger(sMonthInAlpha)
+      	dtDateTime..Year = nYear
+      	dtDateTime..Hour = nHour
+      	dtDateTime..Minute = nMinute
+      	dtDateTime..Second = nSecond
+      	
+      	// Adds the difference
+      	SWITCH sSignOffset
+      		CASE "+" : dtDateTime..Hour -= sHourOffset ; dtDateTime..Minute -= sMinuteOffset
+      		CASE "-" : dtDateTime..Hour += sHourOffset ; dtDateTime..Minute += sMinuteOffset			
+      	END
+      	// Switch back to local mode
+      	dtDateTime = DateTimeUTCToLocal(dtDateTime)
+      	// If the date time is valid, return it
+      	IF DateTimeValid(dtDateTime) THEN RESULT dtDateTime
+      	
+      END
+      
+      
+      
+      
+      // DD Mmm YYYY HH:mm:SS +0100 format (13 Jul 2015 14:15:10 +0300)
+      IF MatchRegularExpression(StringToUTF8(sTagValue), StringToUTF8("([0-9]{2,2}) ([a-zA-Z]{3,3}) ([0-9]{4,4}) ([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2}) (\+|-)([0-9]{2,2})([0-9]{2,2})"),nDay, sMonthInAlpha, nYear, nHour, nMinute, nSecond, sSignOffset, sHourOffset, sMinuteOffset) THEN
+      	
+      	dtDateTime..Day = nDay
+      	// Converts month from letters
+      	dtDateTime..Month = _MonthLetterToMonthInteger(sMonthInAlpha)
+      	dtDateTime..Year = nYear
+      	dtDateTime..Hour = nHour
+      	dtDateTime..Minute = nMinute
+      	dtDateTime..Second = nSecond
+      	
+      	// Converts month from letters
+      	dtDateTime..Month = _MonthLetterToMonthInteger(sMonthInAlpha)
+      	// Adds the difference
+      	SWITCH sSignOffset
+      		CASE "+" : dtDateTime..Hour -= sHourOffset ; dtDateTime..Minute -= sMinuteOffset
+      		CASE "-" : dtDateTime..Hour += sHourOffset ; dtDateTime..Minute += sMinuteOffset			
+      	END
+      	// Switch back to local mode
+      	dtDateTime = DateTimeUTCToLocal(dtDateTime)
+      	// If the date time is valid, return it
+      	IF DateTimeValid(dtDateTime) THEN RESULT dtDateTime
+      	
+      END
+      
+      sAbbvrevTimeZone is string
+      //Mon, 13 Jul 2015 14:15:10 TimeZoneAbbrev format (Fri, 30 Oct 2015 02:17:02 PDT) >> convert the abbreviation of the time zone with its UTC difference to go back to the following format  DD Mmm YYYY HH:mm:SS +0100 (13 Jul 2015 14:15:10 +0300), that is resolved just after in the code 
+      IF MatchRegularExpression(StringToUTF8(sTagValue), StringToUTF8("[a-zA-Z]{3,3}, ([0-9]{2,2}) ([a-zA-Z]{3,3}) ([0-9]{4,4}) ([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2}) ([A-Z]{3,5})"),nDay, sMonthInAlpha, nYear, nHour, nMinute, nSecond, sAbbvrevTimeZone) THEN
+      	
+      	duOffsetDuration is duration = _ZoneToOffset(sAbbvrevTimeZone)
+      	
+      	dtDateTime..Day = nDay
+      	// Converts month from letters
+      	dtDateTime..Month = _MonthLetterToMonthInteger(sMonthInAlpha)
+      	dtDateTime..Year = nYear
+      	dtDateTime..Hour = nHour
+      	dtDateTime..Minute = nMinute
+      	dtDateTime..Second = nSecond
+      	
+      	
+      	// Adds the difference
+      	dtDateTime = dtDateTime - duOffsetDuration
+      	 
+      	// Switch back to local mode
+      	dtDateTime = DateTimeUTCToLocal(dtDateTime)
+      	// If the date time is valid, return it
+      	IF DateTimeValid(dtDateTime) THEN RESULT dtDateTime
+      	
+      	
+      END
+      
+      
+      
+      // Ddd, JJ Mmm YYYY HH:mm:SS +0100 format (Mon, 13 Jul 2015 14:15:10 +0300)
+      IF MatchRegularExpression(StringToUTF8(sTagValue), StringToUTF8("[a-zA-Z]{3,3}, ([0-9]{2,2}) ([a-zA-Z]{3,3}) ([0-9]{4,4}) ([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2}) (\+|-)([0-9]{2,2})([0-9]{2,2})"),nDay, sMonthInAlpha, nYear, nHour, nMinute, nSecond, sSignOffset, sHourOffset, sMinuteOffset) THEN
+      	
+      	
+      	dtDateTime..Day = nDay
+      	// Converts month from letters
+      	dtDateTime..Month = _MonthLetterToMonthInteger(sMonthInAlpha)
+      	dtDateTime..Year = nYear
+      	dtDateTime..Hour = nHour
+      	dtDateTime..Minute = nMinute
+      	dtDateTime..Second = nSecond
+      	
+      	
+      	// Adds the difference
+      	SWITCH sSignOffset
+      		CASE "+" : dtDateTime..Hour -= sHourOffset ; dtDateTime..Minute -= sMinuteOffset
+      		CASE "-" : dtDateTime..Hour += sHourOffset ; dtDateTime..Minute += sMinuteOffset			
+      	END
+      	// Switch back to local mode
+      	dtDateTime = DateTimeUTCToLocal(dtDateTime)
+      	// If the date time is valid, return it
+      	IF DateTimeValid(dtDateTime) THEN RESULT dtDateTime
+      	
+      END
+      
+      // If the date time has an unknown format, returns the default date time that corresponds to now
+      RESULT dtDateTime
+      
+      
+      
+      
+     type : 458752
+   -
+     name : _MonthLetterToMonthInteger
+     internal_properties : CAAAAAgAAADM6G1vKNFBoxCdcP4nEP9LRx9m/x+Nq3NqILbZlDUpABLZsX0O3pqQExHOlTE5LcVSv7gDOhTJu2GDHZ8K6lMZv65QkS1S69koQknVo/ophLaFODh7LA6c+1colOFZ/AnQqu9cJk5Z4w1El7Dp5NoSdGOVItWcjsdCxGOar9ZxLcxFUmzXsnM927Z5KMvcrfu2/lbxQgmlzZ6m7MmT8xK1mRy98MxSuKRVAlMnraQTOLLvGDiA2fptF0WEKrDVhwAGNS7vYumZenKna0OuSoE1sFZ5r9SSjLQF4Utz5jiOKYpI/aUnqJKeVA==
+     procedure_id : 1761972713618444241
+     type_code : 15
+     code : |1+
+      // Summary: Returns the number of the month corresponding to the text
+      
+      PROCEDURE PRIVATE _MonthLetterToMonthInteger(sMonthLetter)
+      
+      SWITCH sMonthLetter
+      	CASE "Jan":
+      		RESULT 1
+      	CASE "Feb":
+      		RESULT 2
+      	CASE "Mar":
+      		RESULT 3
+      	CASE "Apr":
+      		RESULT 4
+      	CASE "May":
+      		RESULT 5
+      	CASE "Jun":
+      		RESULT 6
+      	CASE "Jul":
+      		RESULT 7
+      	CASE "Aug":
+      		RESULT 8
+      	CASE "Sep":
+      		RESULT 9
+      	CASE "Oct":
+      		RESULT 10
+      	CASE "Nov":
+      		RESULT 11
+      	CASE "Dec":
+      		RESULT 12
+      	OTHER CASE:
+      		Error(<§@1b58609e001bb3ce0000§>)
+      		RESULT 0
+      END
+      
+     type : 458752
+   -
+     name : _extractPostImage
+     internal_properties : CAAAAAgAAABxR8qQscjbhcSKUzkSYvLqDl6W1XZw02IgZb8sGxy+aFbqzKE8HJtViiQiBp5NDN0ivrY4O+vzM4udh4QQ8H/baYXa8j58rJo4KpnXrEU5zuFX2evf7G4SIX2qrkU45G1sR24pklZSZuP03DEIGq+83fsscveU6/mAG+x2K4OmVZaOWCmU+srxzVMH3ymKqyfMovmlfgjf1pEwaSVYWvH96yqav01qG6YBwOIS5+pGLIuDe5jrAuQS0Rj+eK4YEU6qM+1LbFW3W8Wvn7uU53XLOvpmSU4EGTijUhKENAnDMVkE+4Et9aUlkqdeUnB5Yczd65RJaLB4Xkyf5omdr338
+     procedure_id : 1761972713618509777
+     type_code : 15
+     code : |1+
+      // Summary: Extracts an image from the post if there is one
+      
+      PROCEDURE PRIVATE _extractPostImage(LOCAL sHTTPResult, LOCAL nStartPos, LOCAL nEndPos, LOCAL nIDRSSStream)
+      
+      // Variable
+      nEncloPos  is int
+      nTypPos    is int
+      nURLPos    is int
+      nEndPosURL is int
+      sURL       is string
+      sPath    is string = fDataDir() + [fSep()] + nIDRSSStream + "_image" + GetIdentifier() + ".tmp"
+      nSizePos is int
+      nEndSizePos is int
+      nSize    is int
+      
+      sHTTPResult = XMLToText(sHTTPResult)
+      
+      nEncloPos = Position(sHTTPResult, "<enclosure", nStartPos, IgnoreCase)
+      IF nEncloPos <> 0 AND nEncloPos < nEndPos THEN
+      	
+      	// Is this an image type?
+      	nTypPos = Position(sHTTPResult, "type=""image", nEncloPos, IgnoreCase)
+      	
+      	// Extracts the URL that points toward the image
+      	IF nTypPos <> 0 THEN
+      		
+      		// Extracts the size
+      		nSizePos = Position(sHTTPResult,"length=",nTypPos,IgnoreCase)
+      		IF nSizePos <> 0 THEN
+      			nEndSizePos = Position(sHTTPResult,"""",nSizePos+10,IgnoreCase)
+      			nSize = sHTTPResult[[nSizePos+Length("length=")+1 TO nEndSizePos-1]]
+      		END
+      		
+      		IF nSize < 200000 THEN
+      			nURLPos = Position(sHTTPResult, "url=""", nEncloPos, IgnoreCase)	
+      			// Beginning and end of the URL
+      			nURLPos = Position(sHTTPResult, """", nURLPos, IgnoreCase)
+      			nEndPosURL = Position(sHTTPResult, """", nURLPos+1, IgnoreCase)
+      			
+      			sURL = sHTTPResult[[nURLPos+1 TO nEndPosURL-1]]
+      			
+      			HTTPDestination(sPath)
+      			HTTPRequest(sURL)
+      			IF ErrorOccurred() THEN
+      				sPath = ""
+      			ELSE
+      				//				IF fSize(sPath) > 200000 THEN
+      				//					fDelete(sPath)
+      				//					sPath = ""
+      				//				END
+      			END
+      		ELSE
+      			sPath = ""
+      		END
+      	ELSE
+      		sPath = ""
+      	END
+      	
+      	IF sPath <> "" THEN 
+      		RESULT sPath
+      	ELSE
+      		sPath = fDataDir() + [fSep()] + nIDRSSStream + "_image" + GetIdentifier() + ".tmp"
+      	END
+      	
+      END
+      
+      
+      //	nContentEncodedPos is int = Position(sHTTPResult, "<content:encoded>", nStartPos, IgnoreCase)
+      //	if nContentEncodedPos <> 0 and nContentEncodedPos < nEndPos THEN
+      // Is this an image type?
+      nPosIMG is int = Position(sHTTPResult, "<img ", nStartPos, IgnoreCase)
+      
+      IF nPosIMG  >= nEndPos THEN
+      	RESULT ""		
+      END
+      
+      IF nPosIMG <> 0 THEN
+      	nEndPosIMG is int = Position(sHTTPResult, ">" ,nPosIMG+1+Length("<img ") , IgnoreCase)
+      	nURLPos= Position(sHTTPResult, "src=""", nPosIMG, IgnoreCase)
+      	nEndPosURL = Position(sHTTPResult, """", nURLPos + Length("src=""") + 1, IgnoreCase)
+      	
+      	IF nURLPos < nEndPosIMG THEN
+      		sURL = sHTTPResult[[nURLPos+Length( "src=""") TO nEndPosURL-1]]
+      		
+      		HTTPDestination(sPath)
+      		HTTPRequest(sURL)
+      		IF ErrorOccurred() THEN
+      			sPath = ""
+      		ELSE
+      			//Check the validity of the image file
+      			IF fSize(sPath) < 2000 THEN
+      				fDelete(sPath)
+      				sPath = ""
+      			END
+      		END
+      	ELSE
+      		sPath =""		
+      	END
+      	
+      ELSE
+      	sPath =""
+      END
+      
+      
+      RESULT sPath
+     type : 458752
+   -
+     name : _extractStreamImage
+     internal_properties : CAAAAAgAAAAqr59LTMwEQtZpoU0sJrC5iWEMTzEwWSbrHSgqwi4LYRZ4rZlxOBN5QX/aSHZQdyeR7pPpiiGGDJGnqaLk+c/ZbXLKtMUCktxlHwKXTpJsgjJFcBVlxlbPdp0WTNcVBSQcoUs9DZsS/1+LxIohanZsN5ULXoSpDKEdGEPdOHrU9+5TEYYPYhRBzBspSDTQpvEPRRoEi8R+tUB1lbwydm0n/4WdRVVX2mjNPR7ftCO4ACb0Ns+uBQz2ZcNWRJF8CS4ULT7ushe4AdQZjfFr35UHVOZHU6/I/KkLck78IMQxRxtrI9dPQ55exjQE2vzvwMUR9eFufUVL+1JiR1QznchQJplL8cdNCl4pbdxJHVs9g7bG2y3fDcLj0FLDzHsXTQ==
+     procedure_id : 1761972713618575313
+     type_code : 15
+     code : |1-
+      // Summary: Retrieves the image associated with an RSS stream
+      
+      PROCEDURE PRIVATE _extractStreamImage(sHTTPResult is string)
+      
+      // Variable
+      bufImage   is Buffer
+      nImagePos  is int
+      nFirstPost  is int
+      nURLPos    is int
+      nEndPosURL is int
+      sURL       is string
+      sFavIcon   is string
+      sResult  is string
+      sHeader    is string
+      
+      nFirstPost = Position(sHTTPResult, "<item>", 1, IgnoreCase)
+      
+      // No image? Try to get the favicon of the site
+      sURL = ""
+      IF bufImage = "" THEN
+      	nURLPos = Position(sHTTPResult,"<link>",1, IgnoreCase)
+      	
+      	// Retrieves the address of the site
+      	IF nURLPos <> 0 AND nURLPos < nFirstPost THEN
+      		// End of the tag
+      		nEndPosURL = Position(sHTTPResult,"</link>",1, IgnoreCase)
+      		
+      		sURL = sHTTPResult[[nURLPos + Length("<link>") TO nEndPosURL - 1]]
+      		
+      		// Retrieves the result
+      		HTTPRequest(sURL)
+      		
+      		IF NOT ErrorOccurred() THEN
+      			sResult = HTTPGetResult()
+      		END
+      		
+      		// Search for the favicon
+      		nImagePos = Position(sResult, "image/x-icon", 1, IgnoreCase)
+      		nClosingTagPos is int = Position(sResult, ">", nImagePos, IgnoreCase)
+      		
+      		// Is there a favicon?
+      		IF nImagePos <> 0 THEN
+      			nPos is int = nClosingTagPos
+      			// Moves up to find the href
+      			WHILE nPos > 0
+      				
+      				// End of the tag, no need to continue to move up
+      				IF sResult[[nPos]] = "<" THEN
+      					BREAK
+      				END
+      				
+      				IF sResult[[nPos TO nPos + Length("href=""") - 1]] = "href=""" THEN
+      					nURLPos    = nPos + Length("href=""")
+      					nEndPosURL = Position(sResult,"""",nURLPos)
+      					
+      					// The link was found!	
+      					sFavIcon = sResult[[nURLPos TO nEndPosURL - 1]]
+      					
+      					// Found
+      					IF NOT sFavIcon ~= "" THEN
+      						IF sFavIcon [= "http" THEN
+      							HTTPRequest(sFavIcon)
+      							IF NOT ErrorOccurred() THEN
+      								bufImage = HTTPGetResult()
+      							END
+      						ELSE
+      							// Relative URL, it must be rebuilt
+      							sURL = sURL + sFavIcon
+      							HTTPRequest(sURL)
+      							
+      							IF NOT ErrorOccurred() THEN
+      								bufImage = HTTPGetResult()
+      							END
+      						END
+      					END
+      					
+      					BREAK
+      				END
+      				
+      				nPos--
+      			END
+      		ELSE
+      			// Search for the favicon at the root of the site!
+      			
+      			// Searches for the first / character (after the ones of http://)
+      			nURLPos    = Position(sURL,"://",1)
+      			nEndPosURL = Position(sURL, "/", nURLPos + Length("://"))
+      			
+      			IF nURLPos <> 0 THEN
+      				IF nEndPosURL <> 0 THEN
+      					sURL = sURL[[1 TO nEndPosURL]]
+      				END
+      				
+      				// Builds the URL of the icon
+      				sURL = sURL + ["/"] + "favicon.ico"
+      				
+      				HTTPRequest(sURL)
+      				
+      				IF NOT ErrorOccurred() THEN
+      					// Checks whether it's OK in the header
+      					sHeader = HTTPGetResult(httpHeader)
+      					sHeader = ExtractString(sHeader,1,CR)
+      					
+      					IF Position(sHeader,"200") > 0 THEN
+      						// Retrieves the image
+      						bufImage = HTTPGetResult(httpResult)				
+      					END
+      				END
+      			END
+      		END
+      	END
+      
+      END
+      
+      RESULT bufImage
+     type : 458752
+   -
+     name : _ReSaveImage
+     procedure_id : 1761972713618640849
+     type_code : 15
+     code : |1+
+      // Summary: Re-saves the image for the current post
+      
+      PROCEDURE PRIVATE _ReSaveImage()
+      
+      IF Post.Image <> "" THEN
+      	
+      	sDestination is string = CompleteDir(fDataDir()) + Post.PostID + "_img.tmp"
+      	
+      	// Copied
+      	IF fRename(Post.Image, sDestination) = True THEN
+      		// Saves
+      		Post.Image = sDestination
+      		HModify(Post)
+      	END
+      END
+     type : 458752
+   -
+     name : getErrorMsg
+     procedure_id : 1761972713618706385
+     type_code : 15
+     code : |1-
+      // Summary: Returns the error message
+      // Syntax:
+      //[<Result> = ] getErrorMsg ()
+      
+      PROCEDURE getErrorMsg()
+      
+      RESULT gsErrMsg
+     type : 458752
+   -
+     name : getDetectedError
+     procedure_id : 1761972713618771921
+     type_code : 15
+     code : |1+
+      // Summary: Checks whether an error was detected
+      
+      PROCEDURE getDetectedError()
+      
+      bError is boolean = gbError
+      
+      gbError = False
+      
+      RESULT bError
+      
+     type : 458752
+   -
+     name : formatContent
+     procedure_id : 1761972713618837457
+     type_code : 15
+     code : |1+
+      // Summary: Formats the content
+      
+      PROCEDURE formatContent(LOCAL sContent is string)
+      
+      // Variable
+      sFormatContent is string
+      
+      sFormatContent = StringFormat(sContent,ccIgnoreSpace)
+      sFormatContent = Replace(sFormatContent, CR, " ")
+      
+      RESULT [CR] + sFormatContent
+      
+     type : 458752
+   -
+     name : postHTML
+     internal_properties : CAAAAAgAAAD0TFXVYCM1C4LtSNLTNj/4nwqBNwuSGDWgkDTk/4s2i1JyZlbtqqAQ+lgxGoqTG31k9Y+qRV3NzG+CbkzU2howKwfodTTBxfWYZwn5H4t/y9xfHFbmGcLhudYBCSa3w+oY/5AszeDAa7NuWTL7FXIXLnT6r2mScZZTmFfXtGQYDcx2KFxptht2bAFT6SRIGRGi0XzRINSiWAn4Xhz/ggQU1mqSAhKP
+     procedure_id : 1761972713618902993
+     type_code : 15
+     code : |1-
+      // Summary: Formats the post in HTML format
+      // Syntax:
+      //[<Result> = ] postHTML (<sContent>)
+      
+      PROCEDURE postHTML(LOCAL sContent)
+      
+      // Variable
+      sStyle  is string = [
+      	<html>
+      	<style type="text/css">
+      	body {background-color : #F3F3F3}
+      	</style>
+      	<font color="#000000" face="Droid sans" size="3">%1</font>
+      	</html>
+      ]
+      
+      
+      
+      // Formatting
+      sContent = Replace(sContent,CR,"<br>")
+      
+      RESULT StringBuild(sStyle, sContent)
+     type : 458752
+   -
+     name : streamAddBD
+     procedure_id : 1761972713618968529
+     type_code : 15
+     code : |1+
+      // Summary: Adds an RSS stream into database
+      PROCEDURE streamAddBD(sURL, sImage is buffer = Null)
+      
+      // Checks whether this stream does not already exist
+      HReadSeekFirst(RSSStream, Address, sURL)
+      IF HFound(RSSStream) = True THEN
+      	Error(<§@1b58609e001bb3ce0003§>)
+      	RESULT False
+      END
+      
+      //Add a new stream to follow
+      
+      // Adds a stream into database
+      HReset(RSSStream)
+      RSSStream.Address         = sURL
+      RSSStream.Image        	= sImage
+      IF NOT HAdd(RSSStream) THEN
+      	Error("Add the stream in error", HErrorInfo())
+      	RESULT False
+      END
+      
+      
+      RESULT True
+     type : 458752
+   -
+     name : _ProcessRedirection
+     internal_properties : CAAAAAgAAAB6FT/MYLyJxG72UTEwLMdIz6qzAGBCW1EwHk0pGaao2mT8VPisRg61nM2csTLxQxUn2ECaBKoJRHYvrDYWRJJObSRt8dpETnqDMKpVYWJXvdzed2rF+ayfnnH3DA8tf9riRXcaxOSUY8SlDUUKtSqbPkAvwz5mNba8l4u+/dLuaywSIeKseK923SA//DVi3LA9urczeSjDkcBpOfW26IQCdOz3gA==
+     procedure_id : 1761972713619034065
+     type_code : 15
+     code : |1+
+      // Summary: Processes the HTML redirections
+      
+      PROCEDURE PRIVATE _ProcessRedirection(LOCAL sBaseURL is string, sHTMLContents is string, sHeader is string)
+      
+      // Variable
+      sContent    is string = sHTMLContents
+      sURL        is string
+      nPosition   is int
+      nReturnCode is int
+      
+      // Redirection by Meta?
+      IF StringCount(sHTMLContents,TAG_REDIRECTION,IgnoreCase)  > 0 THEN
+      	nPosition = Position(sHTMLContents,TAG_REDIRECTION,1, IgnoreCase)
+      	
+      	nPosition = nPosition + Length(TAG_REDIRECTION) + 6 // Add the size of the tag + the 5 characters that define the syntax for the redirection time
+      	WHILE (sHTMLContents[[nPosition]] <> """") AND (nPosition <= Length(sHTMLContents))
+      		sURL +=  sHTMLContents[[nPosition]]	
+      		nPosition++
+      	END
+      	
+      	// Retrieve the content of the redirection
+      	IF sURL [= "=" THEN sURL = sURL[[2 TO]]
+      	
+      	// Relative link?
+      	IF NOT (sURL [= FORMAT_HTTP) AND (NOT (sURL [= FORMAT_HTTPS)) THEN
+      		// Adds the initial URL
+      		sURL = sBaseURL + sURL
+      	END
+      	
+      	IF HTTPRequest(sURL) THEN
+      		sContent = HTTPGetResult()
+      	ELSE
+      		RESULT ""
+      	END
+      END
+      
+      // Redirection by 301 or 302?
+      nReturnCode = Val(ExtractString(sHeader,2," "))
+      IF (nReturnCode = CODE_301) OR (nReturnCode = CODE_302) THEN
+      	sURL = NoSpace(ExtractString(ExtractString(sHeader,2,CR+"Location:"),1,CR))
+      	
+      	IF (sURL [= FORMAT_HTTP) _OR_ (sURL [= FORMAT_HTTPS) THEN	
+      		// Retrieve the content of the redirection
+      		IF HTTPRequest(sURL) THEN
+      			sContent = HTTPGetResult()
+      			IF sContent <> "" THEN
+      				// Redirection by META in the new content?
+      				IF StringCount(sContent,TAG_REDIRECTION,IgnoreCase)  > 0 THEN
+      					sURL = ""
+      					nPosition = Position(sContent,TAG_REDIRECTION,1,IgnoreCase)
+      					
+      					nPosition = nPosition + Length(TAG_REDIRECTION) + 6 // Add the size of the tag + the 5 characters that define the syntax for the redirection time
+      					WHILE (sContent[[nPosition]] <> """") AND (nPosition <= Length(sContent))
+      						sURL +=  sContent[[nPosition]]	
+      						nPosition++
+      					END
+      					
+      					// Retrieve the content of the redirection
+      					IF sURL [= "=" THEN sURL = sURL[[2 TO]]
+      					
+      					// Relative link?
+      					IF NOT (sURL [= FORMAT_HTTP) AND (NOT (sURL [= FORMAT_HTTPS)) THEN
+      						// Adds the initial URL
+      						sURL = sBaseURL + sURL
+      					END
+      					
+      					IF HTTPRequest(sURL) THEN
+      						sContent = HTTPGetResult()
+      					ELSE
+      						sContent = ""
+      					END
+      				END
+      			END
+      		END
+      	END
+      END
+      
+      RESULT sContent
+      
+      
+     type : 458752
+   -
+     name : getNbUnreadPosts
+     procedure_id : 1761972713619099601
+     type_code : 15
+     code : |1-
+      // Summary: Returns the number of unread posts
+      
+      PROCEDURE getNbUnreadPosts(LOCAL nIDRSSStream is int)
+      
+      nPostPos is int = HSavePosition(Post)
+      nStreamPos   is int = HSavePosition(RSSStream)
+      
+      // Variables
+      nNbUnread is int = 0
+      
+      HFilter(Post,RSSStreamID,nIDRSSStream)
+      HReadFirst(Post,RSSStreamID,hKeepFilter)
+      WHILE NOT HOut(Post)
+      	IF Post.Read = False THEN
+      		nNbUnread++	
+      	END
+      	HReadNext(Post,RSSStreamID)
+      END
+      
+      RESULT nNbUnread
+      
+      END:
+      	HDeactivateFilter(Post)
+      	HRestorePosition(nPostPos)
+      	HRestorePosition(nStreamPos)
+     type : 458752
+   -
+     name : GetRSSStreamPosts
+     internal_properties : CAAAAAgAAADh5fePj9WLU5tGOUOmEwt0oy5PNMoqTogzb0YBCAga7tyKa/xUsCzIVuuwBqGSQkNrYVK2BMeHr2wxXgPMygHOHD+ZCzqApJv4KrZEjYxJFuYWcKmlNqc6EWYFRCzmBj69gC7HC+yuBqulCNNTM2lrrfvyHlPSLn311TzkfG6bxNKE14O92Zwzu7+llaS4JEC6mHV7GTnDRhKTfsk0M3eHJKgf/3bu1uJ0vpMAy/CSUkR8C4rDClDUYn4F4HbP7h1ZqY1UmCEnVFyLxoby
+     procedure_id : 1761972713619165137
+     type_code : 15
+     code : |1-
+      // Summary: Retrieves the posts of the stream on Internet
+      // // Automatic process of exceptions:   run CASE EXCEPTION:
+      //
+      // Automatic procedure:
+      // The procedure is run manually, during a call in the code
+      // It will be run in a thread (without having to call the ThreadExecute function), while using HFSQL (full copy of context)
+      // 
+      
+      PROCEDURE GetRSSStreamPosts(stRSSStream is structRSSStream, nIDRSSStream is int,  stCallback is stCallback)
+      
+      
+      
+      tmpPost     is structPost
+      nStartPos     is int
+      nEndPos       is int
+      sDateTime    is string
+      bAdd is boolean
+      
+      sHTTPResult is string = stRSSStream.sHTTPResult
+      
+      // Browses the posts
+      nNbPosts is int
+      nStartPos = Position(sHTTPResult, TAG_POST_OPEN, 1, IgnoreCase)
+      WHILE nStartPos <> 0
+      	
+      	IF nNbPosts = MAX_NB_POSTS THEN BREAK 
+      	
+      	// Searches for the end of the post
+      	nEndPos = Position(sHTTPResult, TAG_POST_CLOSE, nStartPos, IgnoreCase)
+      	
+      	// Extracts the information from the post
+      	tmpPost.sTitle       = _extractTag(sHTTPResult, TAG_TITLE_OPEN, TAG_TITLE_CLOSE, nStartPos)
+      	sDateTime             = _extractTag(sHTTPResult, TAG_DATE_OPEN, TAG_DATE_CLOSE, nStartPos)
+      	tmpPost.dtDateTime  = _dateConverted(sDateTime)
+      	
+      	// Checks whether it has not been already imported
+      	HReadSeekFirst(Post, DatePublicationTitle, [tmpPost.dtDateTime, tmpPost.sTitle])
+      	IF HFound(Post) = False AND NoSpace(tmpPost.sTitle) <> "" THEN
+      		bAdd = True
+      	END
+      	
+      	
+      	IF bAdd = True AND NoSpace(tmpPost.sTitle ) <> "" THEN
+      		tmpPost.sDescription = _extractTag(sHTTPResult, TAG_DESCRIPTION_OPEN, TAG_DESCRIPTION_CLOSE, nStartPos)
+      		tmpPost.sLink        = _extractTag(sHTTPResult, TAG_LINK_OPEN, TAG_LINK_CLOSE, nStartPos)
+      		tmpPost.sImage       = _extractPostImage(sHTTPResult, nStartPos, nEndPos,nIDRSSStream)		
+      	END
+      	
+      	// Adds to the array
+      	ArrayAdd(stRSSStream.arrPost, tmpPost)	
+      	
+      	// Next post
+      	nStartPos = Position(sHTTPResult, TAG_POST_OPEN, nEndPos, IgnoreCase)
+      	
+      	nNbPosts++
+      	
+      END
+      
+      // Sorts by date and time
+      ArraySort(stRSSStream.arrPost,asMember,"-dtDateTime")
+      
+      
+      //Delete the posts formerly stored, that are no longer found in the array
+      FOR EACH Post WHERE RSSStreamID = nIDRSSStream
+      	IF ArraySeek(stRSSStream.arrPost, asLinear, "sTitle;dtDateTime", Post.Title, Post.PublicationDate) < 0 THEN
+      		PostDelete(Post.PostID)	
+      	END
+      END
+      
+      // Adds the recent posts
+      FOR ALL ELEMENT stPost of stRSSStream.arrPost
+      	
+      	// Checks whether it has not been already imported
+      	HReadSeekFirst(Post, DatePublicationTitle, [stPost.dtDateTime, stPost.sTitle])
+      	
+      	IF HFound(Post) = False THEN
+      		
+      		HReset(Post)
+      		Post.RSSStreamID       = nIDRSSStream
+      		Post.Description     = stPost.sDescription
+      		Post.PublicationDate = stPost.dtDateTime
+      		Post.Read              = False
+      		Post.Image 		   = stPost.sImage
+      		Post.Title           = stPost.sTitle
+      		Post.Link            = stPost.sLink
+      		
+      		//Shield: here, we are in a procedure run in a thread 
+      		//The stream may be deleted by the user while we are retrieving this post
+      		//Call to EndAutomatedProcedure before deleting the stream but in Android, the procedure will go until the end, only the repetition will be stopped. 
+      		//Shield here, no need to add the post if the stream is not found 		
+      		HReadSeekFirst(RSSStream,RSSStreamID,nIDRSSStream)
+      		IF NOT HFound(RSSStream) THEN
+      			RETURN
+      		END
+      		
+      		IF NOT HAdd(Post) THEN
+      			Error("Add the post in error Post.RSSStreamID       = " + nIDRSSStream , HErrorInfo())
+      		END
+      		
+      		// Re-saves the image to its definite name
+      		_ReSaveImage()
+      	END
+      END
+      
+      
+      
+      // Run the success callback
+      IF stCallback.OnSuccess <> "" THEN
+      	WHEN EXCEPTION IN
+      		ExecuteMainThread(stCallback.OnSuccess)	
+      	DO
+      		// Code called if the callback is not available anymore. 
+      		// This can occur if the callback is a window procedure and if the window is closed.
+      		Trace(ExceptionInfo)
+      	END
+      END
+      
+      // Management of exceptions
+      
+      CASE EXCEPTION:
+      // Returns the exception
+      TriggerException(stCallback, ERR_WLEXCEPTION)
+     type : 458752
+   -
+     name : PostDelete
+     procedure_id : 1761972713619230673
+     type_code : 15
+     code : |1-
+      PROCEDURE PostDelete(LOCAL nPostID is int)
+      
+      HReadSeekFirst(Post, PostID, nPostID)
+      
+      IF HFound(Post) THEN
+      	
+      	//Delete the image illustrating the post from disk
+      	IF Post.Image <> "" THEN fDelete(Post.Image)
+      	
+      	HDelete(Post)
+      	
+      END
+     type : 458752
+   -
+     name : GetStreamPicto
+     internal_properties : CAAAAAgAAAAmaLOyxgd2uf9s3BS7/CPfXACjaiJxe5V5zL7TmwWw3GhJzV4mhWvPN3kT3NmWZHYl3NS591Ax+1pUq+4JPAwewwEFHSCJ5E0lyowISvmBd6nb0vJZEATgAxQhFl1EaVe0xk6UgFlcyK2UoUl8tkKORtn+sW6PLxV7RBnuNTtErNle92MrQkZ0y9yEl/JoqN8uGgbHfw==
+     procedure_id : 1761972713619296209
+     type_code : 15
+     code : |1-
+      PROCEDURE GetStreamPicto(stRSSStream is structRSSStream)
+      
+      
+      
+      //Get the images of the streams for the preset streams
+      FOR EACH PresetStream 
+      	
+      	
+      	HTTPRequest(PresetStream.URL)
+      	
+      	bufHTTPResult is buffer = HTTPGetResult(httpResult)
+      	
+      	
+      	// Result in UTF8?
+      	IF StringCount(bufHTTPResult, "ISO-8859-1", IgnoreCase) = 0 THEN
+      		bufHTTPResult = UTF8ToString(bufHTTPResult)
+      	ELSE
+      		bufHTTPResult = AnsiToUnicode(bufHTTPResult)
+      	END
+      	
+      	
+      	sHeader    is string   = HTTPGetResult(httpHeader)
+      	sHTTPResult is string = bufHTTPResult
+      	sHTTPResult = _ProcessRedirection(PresetStream.URL,sHTTPResult,sHeader)
+      	
+      	stRSSStream.bufImage     = _extractStreamImage(sHTTPResult)
+      	
+      	
+      	PresetStream.Image = stRSSStream.bufImage    
+      	
+      	
+      	HModify(PresetStream)
+      END
+     type : 458752
+   -
+     name : _ZoneToOffset
+     procedure_id : 1761972713619361745
+     type_code : 15
+     code : |1+
+      //
+      PROCEDURE PRIVATE _ZoneToOffset(LOCAL sArea is string) : duration
+      
+      duOffsetDuration is duration
+      
+      SWITCH sArea
+      	CASE "ACDT"
+      		duOffsetDuration = "0103000000"
+      	CASE "ACST"
+      		duOffsetDuration = "0093000000"
+      	CASE "ACT"
+      		duOffsetDuration = "-0050000000"
+      	CASE "ADT"
+      		duOffsetDuration = "-0030000000"
+      	CASE "AEDT"
+      		duOffsetDuration = "0110000000"
+      	CASE "AEST"
+      		duOffsetDuration = "0100000000"
+      	CASE "AFT"
+      		duOffsetDuration = "0043000000"
+      	CASE "AKDT"
+      		duOffsetDuration = "-0080000000"
+      	CASE "AKST"
+      		duOffsetDuration = "-0090000000"
+      	CASE "AMST"
+      		duOffsetDuration = "-0030000000"
+      	CASE "AMT"
+      		duOffsetDuration = "-0040000000"
+      	CASE "ART"
+      		duOffsetDuration = "-0030000000"
+      	CASE "AST"
+      		duOffsetDuration = "0030000000"
+      	CASE "AWDT"
+      		duOffsetDuration = "0090000000"
+      	CASE "AWST"
+      		duOffsetDuration = "0080000000"
+      	CASE "AZOST"
+      		duOffsetDuration = "-0010000000"
+      	CASE "AZT"
+      		duOffsetDuration = "0040000000"
+      	CASE "BDT"
+      		duOffsetDuration = "0080000000"
+      	CASE "BIOT"
+      		duOffsetDuration = "0060000000"
+      	CASE "BIT"
+      		duOffsetDuration = "-0120000000"
+      	CASE "BOT"
+      		duOffsetDuration = "-0040000000"
+      	CASE "BRST"
+      		duOffsetDuration = "-0020000000"
+      	CASE "BRT"
+      		duOffsetDuration = "-0030000000"
+      	CASE "BST"
+      		duOffsetDuration = "0060000000"
+      	CASE "BTT"
+      		duOffsetDuration = "0060000000"
+      	CASE "CAT"
+      		duOffsetDuration = "0020000000"
+      	CASE "CCT"
+      		duOffsetDuration = "0063000000"
+      	CASE "CDT"
+      		duOffsetDuration = "-0050000000"
+      	CASE "CEDT"
+      		duOffsetDuration = "0020000000"
+      	CASE "CEST"
+      		duOffsetDuration = "0020000000"
+      	CASE "THIS"
+      		duOffsetDuration = "0010000000"
+      	CASE "CHADT"
+      		duOffsetDuration = "0134500000"
+      	CASE "CHAST"
+      		duOffsetDuration = "0124500000"
+      	CASE "CHOT"
+      		duOffsetDuration = "0080000000"
+      	CASE "ChST"
+      		duOffsetDuration = "0100000000"
+      	CASE "CHUT"
+      		duOffsetDuration = "0100000000"
+      	CASE "CIST"
+      		duOffsetDuration = "-0080000000"
+      	CASE "CIT"
+      		duOffsetDuration = "0080000000"
+      	CASE "CKT"
+      		duOffsetDuration = "-0100000000"
+      	CASE "CLST"
+      		duOffsetDuration = "-0030000000"
+      	CASE "CLT"
+      		duOffsetDuration = "-0040000000"
+      	CASE "COST"
+      		duOffsetDuration = "-0040000000"
+      	CASE "COT"
+      		duOffsetDuration = "-0050000000"
+      	CASE "CST"
+      		duOffsetDuration = "-0060000000"
+      	CASE "CT"
+      		duOffsetDuration = "0080000000"
+      	CASE "CVT"
+      		duOffsetDuration = "-0010000000"
+      	CASE "CWST"
+      		duOffsetDuration = "0084500000"
+      	CASE "CXT"
+      		duOffsetDuration = "0070000000"
+      	CASE "DAVT"
+      		duOffsetDuration = "0070000000"
+      	CASE "DDUT"
+      		duOffsetDuration = "0100000000"
+      	CASE "DFT"
+      		duOffsetDuration = "0010000000"
+      	CASE "EASST"
+      		duOffsetDuration = "-0050000000"
+      	CASE "EAST"
+      		duOffsetDuration = "-0060000000"
+      	CASE "EAT"
+      		duOffsetDuration = "0030000000"
+      	CASE "ECT"
+      		duOffsetDuration = "-0040000000"
+      	CASE "EDT"
+      		duOffsetDuration = "-0040000000"
+      	CASE "EEDT"
+      		duOffsetDuration = "0030000000"
+      	CASE "EEST"
+      		duOffsetDuration = "0030000000"
+      	CASE "EET"
+      		duOffsetDuration = "0020000000"
+      	CASE "EGST"
+      		duOffsetDuration = "0000000000"
+      	CASE "EGT"
+      		duOffsetDuration = "-0010000000"
+      	CASE "EIT"
+      		duOffsetDuration = "0090000000"
+      	CASE "IS"
+      		duOffsetDuration = "-0050000000"
+      	CASE "FET"
+      		duOffsetDuration = "0030000000"
+      	CASE "FJT"
+      		duOffsetDuration = "0120000000"
+      	CASE "FKST"
+      		duOffsetDuration = "-0030000000"
+      	CASE "FKT"
+      		duOffsetDuration = "-0040000000"
+      	CASE "FNT"
+      		duOffsetDuration = "-0020000000"
+      	CASE "GALT"
+      		duOffsetDuration = "-0060000000"
+      	CASE "GAMT"
+      		duOffsetDuration = "-0090000000"
+      	CASE "GET"
+      		duOffsetDuration = "0040000000"
+      	CASE "GFT"
+      		duOffsetDuration = "-0030000000"
+      	CASE "GILT"
+      		duOffsetDuration = "0120000000"
+      	CASE "GIT"
+      		duOffsetDuration = "-0090000000"
+      	CASE "GMT"
+      		duOffsetDuration = "0000000000"
+      	CASE "GST"
+      		duOffsetDuration = "-0020000000"
+      	CASE "GYT"
+      		duOffsetDuration = "-0040000000"
+      	CASE "HADT"
+      		duOffsetDuration = "-0090000000"
+      	CASE "HAEC"
+      		duOffsetDuration = "0020000000"
+      	CASE "HAST"
+      		duOffsetDuration = "-0100000000"
+      	CASE "HKT"
+      		duOffsetDuration = "0080000000"
+      	CASE "HMT"
+      		duOffsetDuration = "0050000000"
+      	CASE "HOVT"
+      		duOffsetDuration = "0070000000"
+      	CASE "HST"
+      		duOffsetDuration = "-0100000000"
+      	CASE "IBST"
+      		duOffsetDuration = "0000000000"
+      	CASE "ICT"
+      		duOffsetDuration = "0070000000"
+      	CASE "IDT"
+      		duOffsetDuration = "0030000000"
+      	CASE "IOT"
+      		duOffsetDuration = "0030000000"
+      	CASE "IRDT"
+      		duOffsetDuration = "0043000000"
+      	CASE "IRKT"
+      		duOffsetDuration = "0080000000"
+      	CASE "IRST"
+      		duOffsetDuration = "0033000000"
+      	CASE "IST"
+      		duOffsetDuration = "0053000000"
+      	CASE "JST"
+      		duOffsetDuration = "0090000000"
+      	CASE "KGT"
+      		duOffsetDuration = "0060000000"
+      	CASE "KOST"
+      		duOffsetDuration = "0110000000"
+      	CASE "KRAT"
+      		duOffsetDuration = "0070000000"
+      	CASE "KST"
+      		duOffsetDuration = "0090000000"
+      	CASE "LHST"
+      		duOffsetDuration = "0103000000"
+      	CASE "LINT"
+      		duOffsetDuration = "0140000000"
+      	CASE "MAGT"
+      		duOffsetDuration = "0120000000"
+      	CASE "MART"
+      		duOffsetDuration = "-0093000000"
+      	CASE "MAWT"
+      		duOffsetDuration = "0050000000"
+      	CASE "MDT"
+      		duOffsetDuration = "-0060000000"
+      	CASE "MET"
+      		duOffsetDuration = "0010000000"
+      	CASE "MEST"
+      		duOffsetDuration = "0020000000"
+      	CASE "MHT"
+      		duOffsetDuration = "0120000000"
+      	CASE "MIST"
+      		duOffsetDuration = "0110000000"
+      	CASE "MIT"
+      		duOffsetDuration = "-0093000000"
+      	CASE "MMT"
+      		duOffsetDuration = "0063000000"
+      	CASE "MSK"
+      		duOffsetDuration = "0030000000"
+      	CASE "MST"
+      		duOffsetDuration = "0080000000"
+      	CASE "MUT"
+      		duOffsetDuration = "0040000000"
+      	CASE "MVT"
+      		duOffsetDuration = "0050000000"
+      	CASE "MYT"
+      		duOffsetDuration = "0080000000"
+      	CASE "NCT"
+      		duOffsetDuration = "0110000000"
+      	CASE "NDT"
+      		duOffsetDuration = "-0023000000"
+      	CASE "NFT"
+      		duOffsetDuration = "0110000000"
+      	CASE "NPT"
+      		duOffsetDuration = "0054500000"
+      	CASE "NST"
+      		duOffsetDuration = "-0033000000"
+      	CASE "NT"
+      		duOffsetDuration = "-0033000000"
+      	CASE "NUT"
+      		duOffsetDuration = "-0110000000"
+      	CASE "NZDT"
+      		duOffsetDuration = "0130000000"
+      	CASE "NZST"
+      		duOffsetDuration = "0120000000"
+      	CASE "OMST"
+      		duOffsetDuration = "0060000000"
+      	CASE "ORAT"
+      		duOffsetDuration = "0050000000"
+      	CASE "PDT"
+      		duOffsetDuration = "-0070000000"
+      	CASE "PET"
+      		duOffsetDuration = "-0050000000"
+      	CASE "PETT"
+      		duOffsetDuration = "0120000000"
+      	CASE "PGT"
+      		duOffsetDuration = "0100000000"
+      	CASE "PHOT"
+      		duOffsetDuration = "0130000000"
+      	CASE "PKT"
+      		duOffsetDuration = "0050000000"
+      	CASE "PMDT"
+      		duOffsetDuration = "-0020000000"
+      	CASE "PMST"
+      		duOffsetDuration = "-0030000000"
+      	CASE "BRIDGE"
+      		duOffsetDuration = "0110000000"
+      	CASE "PST"
+      		duOffsetDuration = "-0080000000"
+      	CASE "PYST"
+      		duOffsetDuration = "-0030000000"
+      	CASE "PYT"
+      		duOffsetDuration = "-0040000000"
+      	CASE "RET"
+      		duOffsetDuration = "0040000000"
+      	CASE "ROTT"
+      		duOffsetDuration = "-0030000000"
+      	CASE "SAKT"
+      		duOffsetDuration = "0110000000"
+      	CASE "SAMT"
+      		duOffsetDuration = "0040000000"
+      	CASE "SAST"
+      		duOffsetDuration = "0020000000"
+      	CASE "SBT"
+      		duOffsetDuration = "0110000000"
+      	CASE "SCT"
+      		duOffsetDuration = "0040000000"
+      	CASE "SGT"
+      		duOffsetDuration = "0080000000"
+      	CASE "SLST"
+      		duOffsetDuration = "0053000000"
+      	CASE "SRET"
+      		duOffsetDuration = "0110000000"
+      	CASE "SRT"
+      		duOffsetDuration = "-0030000000"
+      	CASE "SST"
+      		duOffsetDuration = "-0110000000"
+      	CASE "SYOT"
+      		duOffsetDuration = "0030000000"
+      	CASE "TAHT"
+      		duOffsetDuration = "-0100000000"
+      	CASE "THA"
+      		duOffsetDuration = "0070000000"
+      	CASE "TFT"
+      		duOffsetDuration = "0050000000"
+      	CASE "TJT"
+      		duOffsetDuration = "0050000000"
+      	CASE "TKT"
+      		duOffsetDuration = "0130000000"
+      	CASE "TLT"
+      		duOffsetDuration = "0090000000"
+      	CASE "TMT"
+      		duOffsetDuration = "0050000000"
+      	CASE "TOT"
+      		duOffsetDuration = "0130000000"
+      	CASE "TVT"
+      		duOffsetDuration = "0120000000"
+      	CASE "UCT"
+      		duOffsetDuration = "0000000000"
+      	CASE "ULAT"
+      		duOffsetDuration = "0080000000"
+      	CASE "USZ1"
+      		duOffsetDuration = "0020000000"
+      	CASE "UTC"
+      		duOffsetDuration = "0000000000"
+      	CASE "UYST"
+      		duOffsetDuration = "-0020000000"
+      	CASE "UYT"
+      		duOffsetDuration = "-0030000000"
+      	CASE "UZT"
+      		duOffsetDuration = "0050000000"
+      	CASE "VET"
+      		duOffsetDuration = "-0043000000"
+      	CASE "VLAT"
+      		duOffsetDuration = "0100000000"
+      	CASE "VOLT"
+      		duOffsetDuration = "0040000000"
+      	CASE "VOST"
+      		duOffsetDuration = "0060000000"
+      	CASE "VUT"
+      		duOffsetDuration = "0110000000"
+      	CASE "WAKT"
+      		duOffsetDuration = "0120000000"
+      	CASE "WAST"
+      		duOffsetDuration = "0020000000"
+      	CASE "WAT"
+      		duOffsetDuration = "0010000000"
+      	CASE "WEDT"
+      		duOffsetDuration = "0010000000"
+      	CASE "WEST"
+      		duOffsetDuration = "0010000000"
+      	CASE "WET"
+      		duOffsetDuration = "0000000000"
+      	CASE "WIT"
+      		duOffsetDuration = "0070000000"
+      	CASE "WST"
+      		duOffsetDuration = "0080000000"
+      	CASE "YAKT"
+      		duOffsetDuration = "0090000000"
+      	CASE "YEKT"
+      		duOffsetDuration = "0050000000"
+      	CASE "Z"
+      		duOffsetDuration = "0000000000"
+      	OTHER CASE
+      		duOffsetDuration = "0000000000"
+      END
+      
+      
+      
+      RESULT duOffsetDuration
+      
+      
+     type : 458752
+   -
+     name : GetRSSStreamInfo
+     internal_properties : CAAAAAgAAADqhY+zIIApSDTMZXN+YlnCxbQp28Mq971aSBHng+gWGLrmZgw0HjpZ3hfwf9jnWTvNeqKGROoNQKxlfEBAEtwAI95zWfY40kK9Asr/O6D5n56M4uF+gEcAT4L6M6zARB0pTM4FKc+TKKkSYNwnUAv6gUNuNqP5xD9lGCIJDqGrtgN51Ek1Z6KjHgl+hybJ4e7221jYDN1seKvUNpbR7WOT5FxnEA==
+     procedure_id : 1761972713619427281
+     type_code : 15
+     code : |1-
+      PROCEDURE GetRSSStreamInfo(LOCAL sAddressRSSStream is string, LOCAL nErrorCode is int = -1)
+      
+       // Variables
+      bufHTTPResult is buffer
+      sHeader       	is string
+      bAdd      	is boolean = True
+      stRSSStream 		is structRSSStream
+      
+      // Reinitialization
+      stRSSStream.bufImage = ""
+      stRSSStream.sDescription = ""
+      stRSSStream.sLink = ""
+      stRSSStream.sTitle = ""
+      ArrayDeleteAll(stRSSStream.arrPost)
+      
+      // Retrieves the HTTP result
+      HTTPRequest(sAddressRSSStream)
+      IF ErrorOccurred() = True THEN
+      	nErrorCode = ERR_INTERNET
+      	RESULT stRSSStream
+      END
+      
+      bufHTTPResult = HTTPGetResult(httpResult)
+      
+      
+      // Result in UTF8?
+      IF StringCount(bufHTTPResult, "ISO-8859-1", IgnoreCase) = 0 THEN
+      	bufHTTPResult = UTF8ToString(bufHTTPResult)
+      ELSE
+      	bufHTTPResult = AnsiToUnicode(bufHTTPResult)
+      END
+      
+      
+      sHeader       = HTTPGetResult(httpHeader)
+      sHTTPResult is string = bufHTTPResult
+      sHTTPResult = _ProcessRedirection(sAddressRSSStream,sHTTPResult,sHeader)
+      stRSSStream.sHTTPResult = sHTTPResult
+      
+      // Checks the validity of the RSS stream
+      IF StringCount(bufHTTPResult, "</rss>", IgnoreCase) = 0 OR StringCount(bufHTTPResult, "<channel", IgnoreCase) = 0 THEN
+      	nErrorCode = ERR_INCORRECT_STREAM
+      	RESULT stRSSStream
+      END
+      
+      bModif is boolean = False
+      IF RSSStream.Title = "" THEN
+      	// Title of the RSS stream
+      	stRSSStream.sTitle       	= _extractTag(sHTTPResult, TAG_TITLE_OPEN, TAG_TITLE_CLOSE, 1)
+      	RSSStream.Title        	= stRSSStream.sTitle
+      	bModif = True 
+      END
+      
+      IF 	RSSStream.Description     = "" THEN
+      	// Description
+      	stRSSStream.sDescription = _extractTag(sHTTPResult, TAG_DESCRIPTION_OPEN, TAG_DESCRIPTION_CLOSE, 1)
+      	RSSStream.Description  = stRSSStream.sDescription	
+      	bModif = True 
+      END
+      
+      IF RSSStream.Image = "" THEN
+      	// Image of the RSS stream
+      	stRSSStream.bufImage    = _extractStreamImage(sHTTPResult)
+      	RSSStream.Image         = stRSSStream.bufImage
+      	bModif = True 
+      END
+      
+      IF bModif = True THEN
+      	HModify(RSSStream)
+      END
+      
+      RESULT stRSSStream
+     type : 458752
+   -
+     name : streamFlagPostsAsRead
+     procedure_id : 1761972713619492817
+     type_code : 15
+     code : |1-
+      PROCEDURE streamFlagPostsAsRead(LOCAL nStreamID is  int)
+      
+      
+      HourGlass(True)
+      
+      FOR EACH Post WHERE RSSStreamID = nStreamID
+      	Post.Read = True
+      	HModify(Post)
+      END
+      
+      
+      END:
+      HourGlass(False)
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+resources :
+ string_res :
+  identifier : 0x1b58609e001bb3ce
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+  strings :
+   -
+     text :
+      en-GB : "Internal error, contact the application provider"
+     index : 0
+   -
+     text :
+      en-GB : This RSS stream is already read by the application
+     index : 3
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

@@ -1,0 +1,285 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : WM RSS Reader
+ major_version : 28
+ minor_version : 0
+ type : 4097
+ description : ""
+ subtype : 0
+project :
+ identifier : 0x0
+ internal_properties : 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
+ configurations :
+  -
+    name : Android RSS Reader
+    internal_properties : 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
+    configuration_id : 5512303448401807662
+    type : 15
+    generation_directory : .\Exe\Android RSS Reader
+    version : {}
+    language : 2
+    telemetry :
+     status : disabled
+  -
+    name : iOS RSS Reader
+    internal_properties : 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
+    configuration_id : 16481320549707773202
+    type : 18
+    generation_directory : .\Exe\iOS RSS Reader
+    version : {}
+    language : 2
+    telemetry :
+     status : disabled
+ elements :
+  identifier : 0x4b582bb4000206ca
+  elements :
+   -
+     name : WIN_PostList
+     identifier : 0x4b5835a400cdd733
+     internal_properties : CAAAAAgAAADHQy9zsO3F5vGFMCIK/v+gEXIM3NaHaR92JaGUpJcHgU+d9YyarlVcjohyTtYK9urSUg==
+     physical_name : .\WIN_PostList.wpw
+     type : 2
+   -
+     name : COL_RSSStream
+     identifier : 0x4b5883000069023e
+     internal_properties : CAAAAAgAAADnY8/T0I2lRhHlkAIqH9+ATdhEBLQ9zCi2VRcJT8xOSrZ61K16jjW8LujSLvbqlgrycg==
+     physical_name : .\COL_RSSStream.wdg
+     type : 7
+   -
+     name : QRY_PostListFavorite
+     identifier : 0x4b84184c0027f8b3
+     internal_properties : CAAAAAgAAABi2FpOfSqCnboKtaefmOIr4N1fV+aV/2WqMOaay63n2S+D7RQFO9jhAz2nEZFPK51n7w==
+     physical_name : .\QRY_PostListFavorite.WDR
+     type : 5
+   -
+     name : WIN_PostForm
+     identifier : 0x4b5835b900d6289c
+     internal_properties : CAAAAAgAAAAhHRkNuufP4O9P/mzUrjXy26gmDszNFuayEl2QtFe/MYNdOUjQcBOayHJsVNwU7NwkLA==
+     physical_name : .\WIN_PostForm.wpw
+     type : 2
+   -
+     name : WIN_FavoritesList
+     identifier : 0x4b83a186001a0805
+     internal_properties : CAAAAAgAAAA2HB4CoZ6WmaY24XP7xnK7FHVjSxn1qG1KKCix8AsB98kZf4KpXwSN/zmjHeUb59kjIw==
+     physical_name : .\WIN_FavoritesList.wpw
+     type : 2
+   -
+     name : WIN_Main
+     identifier : 0x4b583093004e0bba
+     internal_properties : CAAAAAgAAAB3019DYN1VVmH1oLK61w8gvfjElBT9ISe20YehV6R2gn5yPEXqHsXMPvji3qZaJppi4g==
+     physical_name : .\WIN_Main.wpw
+     type : 2
+   -
+     name : COL_Asynchronous
+     identifier : 0x45a3dbf201402746
+     internal_properties : CAAAAAgAAACjn5uPPGlBWmYKWDux6+9s69qyemjiqNtzoxnC3ThSRrYONmHoEUG+R/zm0lKOal6mrg==
+     physical_name : .\COL_Asynchronous.wdg
+     type : 7
+   -
+     name : IW_SlidingMenu
+     identifier : 0x45db473b01017335
+     internal_properties : CAAAAAgAAACa8EJGZSKKlV+rUcH+2bjc6v2Z6dOt/edKCNm2F/6Wap5clW6Ge6CzACWfGZlXI5V/hw==
+     physical_name : .\IW_SlidingMenu.wdw
+     type : 8
+   -
+     name : QRY_PresetStreamAccordingToCategory
+     identifier : 0x45dddcd8022f5df0
+     internal_properties : CAAAAAgAAAAnIw8TkM1lBtJQ0Y0QuHvUHWpQMIsy8z2y0tw006XxD/nbe9JqUJgMc6gS7rYq1soyMg==
+     physical_name : .\QRY_PresetStreamAccordingToCategory.WDR
+     type : 5
+   -
+     name : QRY_CategoryWithPresetStreams
+     identifier : 0x45e082e500f9e675
+     internal_properties : CAAAAAgAAABu9EZaaRYe0Zv8KiWfwwPoEjFZATppRXuO3495GICUlLS+2xvp1z4svGFbpW1jH5F7+w==
+     physical_name : .\QRY_CategoryWithPresetStreams.WDR
+     type : 5
+   -
+     name : QRY_FindStream
+     identifier : 0x4669a33f03029757
+     internal_properties : CAAAAAgAAAAxDWm9ijd/sLlEFkr3+UelNRJ4eMNCoBqO18j4H4kN0zX/tmGSaUYN2kK8BIxEPKwUHA==
+     physical_name : .\QRY_FindStream.WDR
+     type : 5
+   -
+     name : QRY_PostList
+     identifier : 0x4b58538701329305
+     internal_properties : CAAAAAgAAABu9EZaaRYe0Z5+OSsD+Yor6P/n79hH0Gt2hWFvdiLy7tYYfHWhp0xVt2FbpW1jH5F7+w==
+     physical_name : .\QRY_PostList.WDR
+     type : 5
+   -
+     name : QRY_PostLast
+     identifier : 0x4b83f466002ec033
+     internal_properties : CAAAAAgAAAA4FmC8izB4o6wAv62VbGwR/u/13WiXPhWKGN4iJ5ED/ccPZRwPMdLbCTOtC4tFPbMdJQ==
+     physical_name : .\QRY_PostLast.WDR
+     type : 5
+  other_elements :
+   -
+     physical_name : .\Exe\Android RSS Reader\Category.fic
+     configurations :
+      -
+        internal_properties : CAAAAAgAAADOAcMIxqq1KnKXSFNJr0uKFFjCpmFzBX7T4clpm8xTxMO3fR0p
+        configuration_id : 5512303448401807662
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 16481320549707773202
+        excluded : true
+   -
+     physical_name : .\Exe\Android RSS Reader\Category.ndx
+     configurations :
+      -
+        internal_properties : CAAAAAgAAADOAcMIxqq1KnKXSFNJr0uKFFjCpmFzBX7T4clpm8xTxMO3fR0p
+        configuration_id : 5512303448401807662
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 16481320549707773202
+        excluded : true
+   -
+     physical_name : .\Exe\Android RSS Reader\Category.mmo
+     configurations :
+      -
+        internal_properties : CAAAAAgAAADOAcMIxqq1KnKXSFNJr0uKFFjCpmFzBX7T4clpm8xTxMO3fR0p
+        configuration_id : 5512303448401807662
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 16481320549707773202
+        excluded : true
+   -
+     physical_name : .\Exe\Android RSS Reader\PresetStream.fic
+     configurations :
+      -
+        internal_properties : CAAAAAgAAADOAcMIxqq1KnKXSFNJr0uKFFjCpmFzBX7T4clpm8xTxMO3fR0p
+        configuration_id : 5512303448401807662
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 16481320549707773202
+        excluded : true
+   -
+     physical_name : .\Exe\Android RSS Reader\PresetStream.ndx
+     configurations :
+      -
+        internal_properties : CAAAAAgAAADOAcMIxqq1KnKXSFNJr0uKFFjCpmFzBX7T4clpm8xTxMO3fR0p
+        configuration_id : 5512303448401807662
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 16481320549707773202
+        excluded : true
+   -
+     physical_name : .\Exe\Android RSS Reader\PresetStream.mmo
+     configurations :
+      -
+        internal_properties : CAAAAAgAAADOAcMIxqq1KnKXSFNJr0uKFFjCpmFzBX7T4clpm8xTxMO3fR0p
+        configuration_id : 5512303448401807662
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 16481320549707773202
+        excluded : true
+   -
+     physical_name : .\Exe\iOS RSS Reader\Category.fic
+     configurations :
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 5512303448401807662
+        excluded : true
+      -
+        internal_properties : CAAAAAgAAAAz3SEk78lPftHHUZhlRo2CX5HwoQXnDS/l3jzY9UveE10OD9+t7o9vGQ==
+        configuration_id : 16481320549707773202
+   -
+     physical_name : .\Exe\iOS RSS Reader\Category.ndx
+     configurations :
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 5512303448401807662
+        excluded : true
+      -
+        internal_properties : CAAAAAgAAAAz3SEk78lPftHHUZhlRo2CX5HwoQXnDS/l3jzY9UveE10OD9+t7o9vGQ==
+        configuration_id : 16481320549707773202
+   -
+     physical_name : .\Exe\iOS RSS Reader\Category.mmo
+     configurations :
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 5512303448401807662
+        excluded : true
+      -
+        internal_properties : CAAAAAgAAAAz3SEk78lPftHHUZhlRo2CX5HwoQXnDS/l3jzY9UveE10OD9+t7o9vGQ==
+        configuration_id : 16481320549707773202
+   -
+     physical_name : .\Exe\iOS RSS Reader\PresetStream.fic
+     configurations :
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 5512303448401807662
+        excluded : true
+      -
+        internal_properties : CAAAAAgAAAAz3SEk78lPftHHUZhlRo2CX5HwoQXnDS/l3jzY9UveE10OD9+t7o9vGQ==
+        configuration_id : 16481320549707773202
+   -
+     physical_name : .\Exe\iOS RSS Reader\PresetStream.ndx
+     configurations :
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 5512303448401807662
+        excluded : true
+      -
+        internal_properties : CAAAAAgAAAAz3SEk78lPftHHUZhlRo2CX5HwoQXnDS/l3jzY9UveE10OD9+t7o9vGQ==
+        configuration_id : 16481320549707773202
+   -
+     physical_name : .\Exe\iOS RSS Reader\PresetStream.mmo
+     configurations :
+      -
+        internal_properties : CAAAAAgAAAD8s1gpoAka2wWEdhpfRA==
+        configuration_id : 5512303448401807662
+        excluded : true
+      -
+        internal_properties : CAAAAAgAAAAz3SEk78lPftHHUZhlRo2CX5HwoQXnDS/l3jzY9UveE10OD9+t7o9vGQ==
+        configuration_id : 16481320549707773202
+  analysis : .\WM RSS Reader.ana\WM RSS Reader.wda
+  net_assemblies : []
+  uwp_api : []
+  external_components : []
+  internal_components : []
+ report_and_queries_enabled : false
+ languages :
+  - en-GB
+ wd_style_sheet : .\RssSoftReader.sty
+ wb_style_sheet : .\RssSoftReader.wws
+ code_elements :
+  internal_properties : CAAAAAgAAAAbPMvg4e98UKdWfh9fvb8azhPhz2ijInDKbm94qukWwyWzHbjycZh/bJ5Fw2cJwyvMhNfed1TCaXpWudelrYhV1JaFAGLlkJlz
+  type_code : 0
+  p_codes :
+   -
+     code : |1-
+      
+      HCreationIfNotFound("*") 
+     type : 196608
+   -
+     type : 196621
+   -
+     type : 196627
+     enabled : false
+  orphans :
+   -
+     name : Android RSS Reader
+     identifier : 0x4b582bb500030737
+     code_elements :
+      type_code : 159
+      p_codes : []
+   -
+     name : iOS RSS Reader
+     identifier : 0x454b86bf005a5e09
+     code_elements :
+      type_code : 159
+      p_codes : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : RssSoftReader
+rad :
+ internal_properties : CAAAAAgAAABhIL0UXeZmxDJxY3Xy0Q==
+project_explorer :
+ explorer_type : project
+resources :
+ string_res :
+  identifier : 0x0
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAAAd98VSJfHHqE3P0QHwrwdhn7ig8dWBR6valpUTgnAMTVXiDg==

@@ -1,0 +1,594 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : WIN_Main
+ major_version : 28
+ minor_version : 0
+ type : 2
+ description : ""
+ subtype : 0
+window :
+ name : WIN_Main
+ identifier : 0x2873c8d61fa6866b
+ internal_properties : CAAAAAgAAAATxjRea3VLO3Xp4RT3nGB1gPBTO3/vxjaJq5pBxejV1PN9Az7bx4U90DHS6fRizv+/0Ej9pXr6KdfdiQGLh1RjQYYBdi/DczEoE332lf0afDzdhksqQoWUyvx1IsGxiJj9C3TQrIDuSxVm6FATUaabyMhAvVGikMALc1CrKuetVcvaM0RLpjg2uwB/CcZvcIvbNBHQQVSGmI2NxKJPoWnlxhliCEgKlvrzsyyilMRA7gxW4YpBEehpEnI3A6Vyo7yOsFcg49aDqoIpfE7EXD09ZA/8LETWdgt46MCFda4SRQVa6XmyoixGRKlR9DSu3/EJIahED2uwkklQcSDXVhof8MCQD0abD5Xv9JAdG/eydge8MmCIkCRAgHK/PG31nVU5Fp/ag4e6aECMFZ4CvPVCEWu/ufUpbfQZqdGzpVgWjv6UwxFjofqEAXlP1hTOCHAEFGKK9GSBuWRixJOg7LGSlwGjxHspOaW1zaI8ZCp1PyqwWs2RuaZQutQCMoSRPjyfupW/B2M8GyQUNJTKetPEM8nOL0qG/qaRC7Q1MRZayB+qgrL2futEOWvisgTxFAHjeeJuCHCUkOFd+uQQ6AtJBbA/GPYclLrqSYy5B+Ynr1Zteet3IVQRdfKaugSEqC5x1s7JrbepSm5GTcdbpVdWIaD2VwZ+JyQkWYqrBRkt5kevhUuxVuGxeNZwS9lL5fJ0VhqNvFySanj2FskKUFXeMA5AyPoIzRRHNgpSQBxmY5a6F7VHLWljC7acujP0G9CVLIJ6LxklyXrKr8iVwy9oUSp5+CexP8DJcQ==
+ properties :
+  width : 320
+  height : 407
+  heightMin : 480
+ controls :
+  -
+    name : LOOP_RSSStream
+    identifier : 0x2873c8d61fa9866b
+    internal_properties : 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
+    properties :
+     width : 320
+     height : 361
+    controls :
+     -
+       name : STC_NAME
+       identifier : 0x2873c8d61fb0866b
+       internal_properties : CAAAAAgAAABHuhbbK1oG4jrH12q4W4FYVtcPo96LMw22qSTHR0/evhumS8fq5Ae/heouFPncaZ5DR4noYJLpGyDKm0sbXVRdtR2Mmhr+b1l2o40tdLDEy6qIDxJgoFEOyIGntIgk02aqCLXYZ+dRGZ68umLK2s5S3DoJzZDC+/G7IgZXxBxfl8/r90wiKaFK3v+XlIXmmcRM1R4qIJRNpLkPo8baeexrZJdrespMFt5bkGPHUSt0hTsy6CvT+hoh3xkRhvpuSJe+QR8Bbre28myo8/o3mNjGZId+ZjQcTlu1r7H/G4ycWpoQTKpIDw7dXixchqiJ4ui91wVrc9+rBeAGOV5W5XBIKCWKCQeTbWnz4JYSJfZgdaxffCCftaUBC4iVDLJRqn2nGtikSGMuKZBqPD2kqFtEAqYWsIHKiRCEFpcgrFpnyH1uDJRi+SQrL07DnoBbZne8KikFha9v7GdWgglW4QbOFm1AXvbF0j/wrAmw6Eo/NRNwvWqyd2vrPUyW7FJLXCT5jX50LNUX170Tg3k7qz4t5bIBb+HKcetCQB/r5fb0YkqH6uZe
+       properties :
+        x : 35
+        y : 3
+        width : 256
+        height : 25
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+     -
+       name : STC_LAST_POST
+       identifier : 0x2873c8d61fb1866b
+       internal_properties : CAAAAAgAAACyQr73GIMbtawYVcCqJq25dk0FvJ7bnjZ5lyF7PCojAlEPvCRtlC0tBdGiP/wC5v76F04I5u6tqd0IBm0+zy3P8Lh6PYyi7kLyu9xJI4r57QIUeohyPbPtZVT1/0a4xj3zzmG/mjAm5TESSb5u6+5XVcMd7YKaFHSgC6cYLUVwRcmbWIHUR142nHKOvr2J7AlxX6Y2W4T8eywvE/+DGpUOmqUksq6/spxNTWfFOutNWDplnE2c6S1V3LoKOQgZp7FIb442+CqNpAuus3fgUdGDx/PrujDY+ip1R1LgEoNYi9T+JCe/YDWpEMnOsl9K4h3PkWKDZf7ptjA4bkEKJLV7l9q1NWuxmzV8Vn0ewFFJqi9Fsm+bhDdr75ev/x35ynMA8fw2HD/MwzbRD6OyaFkGcNvGXE9G35TaekRAEzEDXG6pofPjfDu600WgwiwWodjDADVOagImJVRilG7J0ZYsGHD314kMZNnChJCuZD1eAiB9WyljAR6b6wnRt3z9QeCn/8MwN1ZegUi3E7Uh
+       properties :
+        x : 36
+        y : 28
+        width : 232
+        height : 16
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+     -
+       name : IMG_RSS
+       identifier : 0x2873c8d61fb2866b
+       internal_properties : CAAAAAgAAABkKj/18BrqK9VCHU0w+vsZMWdb+zahEnotfmgM08AyH4OQaFuRWyqEkwtWodPL1mwiXdATmK4zfgQSG9zTbDbsvjdE0+90OpiygNsJik45Nt1zlmhkJ7gHLlINoR48vnBMxvOqG4NNCD8FyfuhVfLHHg1dRgTo/bthVb0aWoRJnlc3jcemSr4TroE4b+pCxmXrXZQVw97hLKWK15dDqDgcBnrbN4tuWFha4xlzXl/rcaZAnjCuSpkl1yFE/DNiZAQe3TXln7tM6Yh0wggrhgHgH6juIrZIorEHW+DFA3L4UVjFdn5of062xjw5dmzRPVeI51w6CPa15Z8TLP4mm9fWhQx1E2YFZoSZ2+Vr0ixOjTe+UEIooU9Z7sV0yiimpCcIhKONSQNXLrL7BffDpcVCEnOVeE4P5OvhDXhQ/Iy5cvpCPGBsgjgRuOSaXKkDkDtWX5W64erK72ZMO5m1vryn4Q1l8NUCmiA76OekNPlHdH0jm30Zaim/Z6oqX1UAki56Bt9yWX91llyBzQf0DMF9N2XUAZsPMKyEZ9eX0ImDw439L33HTJdNoZZNNH9ACtwItK0hvBGc3PrmIQW2e/pisJpSnQomfebdbT+qSTz+fodi1f4Ly4C9jnNBqxBsHcHxB+4wjGHwAHyjRpffNlwrRvZZIZVrhAxvQkQaRLrr0mWDGNLvyBcG1vES68cmOd6BYAaHc1OZbmeRPuvHcZHF71mE2GZLO4sgKTcmK2qjtvsMYO3kvBcZtRsIDJModt5t5Kac2xhFSnxLDVemCfefVLvA9glKwWPH5FEaXzNjf8VDXl+JP/alYzcEVh/ivEOPDi5CvLde/+ejzzEnR5iS8rdGbbV5MkB98syyoD35IH+FKF8X0Jz1F9shKCK9SvZxisksXsMTvWiEI5ykoREAA1YJBIj650ClBpnoTzUTlWmjnziZ+ZX53/CIxUvzyc5riv28ZyRHiHNRv6nESBXfUAyWsAjFtR1sLn8dIcbeTyDpgx2aK0f46rYssMHW0/DIJURtlkd6fXh4jZ3fyA==
+       properties :
+        x : 9
+        y : 6
+        width : 20
+        height : 20
+       type : 8
+       code_elements :
+        type_code : 8
+        p_codes : []
+     -
+       name : STC_ID
+       identifier : 0x2873c8d61fb3866b
+       internal_properties : CAAAAAgAAABfWThW0MtqmyzUuWq9vK0Ig8jUzu66O4OE+Ba2ofQB/YlEB2+wag2o0x8BqLdJu8BLM2KVJ9epsCgOvZ9xz078wHqyaiqQnz6q+blvX/dnUv8BWcHKYUTnsMhXXXsc36wEWrLIR33UYTcpjInksmWWzAYsDa7SEow0szB//HhTzG4iMCYgeN2AaXP4f98jcjsGOhlQ1GTHHR6O13tr0LSkekg9iy3xC9HfW91mREmrXv3C4g3wYVrUx+dLWMqy7xaIA1UV3h94CC+GTG9nYltvi+99wh+Jh0cKlrBVPVlr6iWLfw6WOigCxpJadtsAIgmpGNfy7dLyqB+F2X6xhLUXEmvhu4z9JyMtcpJ+1rlUyQfRavx2T0XJMZzUQ5enKG27sUMsVvMM1JbXUFXS8OfxiwZH3D5FRfEgfNXagl1OoaacMiufc5gjYH1bXo96J9DG+dUOZ3LyyBkOQW9AweN4v4KhOfPAQ77EwscGaBr806hgs6xY
+       properties :
+        x : 283
+        y : 2
+        width : 32
+        height : 28
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+     -
+       name : STC_X_not_read
+       identifier : 0x2873c8d61fb4866b
+       internal_properties : CAAAAAgAAABHYLPQ/aidJ57MG2sLY2QHy0ab9lzuUchRz1xMlAXqYntNM5PQj1mf+1Uyd7DmTWE5zbp2tcmZG8Ouf7T08rfrmcUXGgxgj8bxZeh5hsLF2SjmyXF9B4GJAaYKaQ8G4rh4xAKdut7B/7KmdRRovap0vz7guXXkls9lquS+GcZfk9r6AcxmoneiiVLubYsxUnpN+jeXfymi+3WY1Hwl3Wr4NyAoSrED9fMyXy8qEHR3iZp/Ui6Q1I0ef5xkjTWvBIxaIOnrpA9H9GGxGEIRvsiN36IhzLP3soyKugAuzx3MaBaXe/Dl202lo0XEGzdKAMCsdMpXn1/pgwj9Btj/EFbrYXcZHOV9N5sq9eiC3a+ovrpCJSSH2EHlGPWVUUzs0D3oTidJspgNx9+xLnXsPDtC8W3rshT9ccLykp00Q63ypaLkskapMkUvnd2Jugak3MVy7k5BEbCc8L6QDC0qWHfDfJfkYxl7UiwojsyKMNtbEtoDUP7hpcQEUcg4zPByi1U2yilrJpQk5c8=
+       properties :
+        x : 36
+        y : 46
+        width : 270
+        height : 16
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+    columns :
+     -
+       name : ATT_RSSSTREAMID
+       identifier : 0x2873c8d61faa866b
+       internal_properties : CAAAAAgAAACF+KwNa+GyjKE7WPnymYXC5YtoNFAduo89b3VrLPDMtLnXEnNHreFzBUEKtmyqikJfUZfPobu5HjDEc8kBavurFtkOPtXBFyrbFsmNUQNOtacPIUJoOmWw3rFjOpRHzFOLhCaZRGy/YEiysDxhl3j7OpmdRAe7b/XLwktAFasKCQ==
+       type : 3
+       content :
+        identifier : 0x2557a446058f4edc
+        internal_properties : CAAAAAgAAADryTcE1wdYvD3vRXveAy878MY0tBGVtRJFCKec9ONjoMSjdXko/BUQ7/aa5td4J0QGwbNDZ7u6HVAmFeJiKUW3AIZke7mPEa6O3T80XKwyKxqdz/+IMzq1H7wKTkmLCftmXeih3L2wxA9F34R1rzMUewXfPfNhH+yFL0Z0QK0+gscBykmAbH8+KcjlpZVlWXf1O2O2UpXFTj2e+Oh2XQ==
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_NAME
+       identifier : 0x2873c8d61fab866b
+       internal_properties : CAAAAAgAAAA5WtAdD/dxpygApGLPcGsHTpzlSmMm8jxoZRQdDLZgF/v4zsxj9E+fIZq4/CTFOtWTLv+r3HjyVGO797OoJlMZrsOTt/e7VdNvvKd5mc+576aV7JrMehM+sr/ttDA57yXXyZ7So6FnDzPQPttVFAB2KF3lL6OoaYWHhZNc9q2DxCEn
+       type : 3
+       content :
+        identifier : 0x2557a44605914edc
+        internal_properties : CAAAAAgAAADryTcE1wdYvD3vRXveAy878MY0tBGVtRJFCKec9ONjoMSjdXko/BUQ7/aa5td4J0QGwbNDZ7u6HVAmFeJiKUW3AIZke7mPEa6O3T80XKwyKxqdz/+IMzq1H7wKTkmLCftmXeih3L2wxA9F34R1rzMUewXfPfNhH+yFL0Z0QK0+gscBykmAbH8+KcjlpZVlWXf1O2O2UpXFTj2e+Oh2XQ==
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_LAST_POST
+       identifier : 0x2873c8d61fac866b
+       internal_properties : CAAAAAgAAAACVRdizgd1j0hGwEvgS01FPDRZCwL1BpE/Btf34prNIhOaWCISIrD/WRl34JdW29akFyUTPczg0IB6hwVgGlJZ+PYYfnTMM4ruEeYbFoRvsVMrdyTl0Svhs1uE0aCLYcMtbbUMcbRdyWC6k2hvqyhIOFGt9zZi5kJwvkah7aYImRQS
+       type : 3
+       content :
+        identifier : 0x2557a44605934edc
+        internal_properties : CAAAAAgAAADryTcE1wdYvD3vRXveAy878MY0tBGVtRJFCKec9ONjoMSjdXko/BUQ7/aa5td4J0QGwbNDZ7u6HVAmFeJiKUW3AIZke7mPEa6O3T80XKwyKxqdz/+IMzq1H7wKTkmLCftmXeih3L2wxA9F34R1rzMUewXfPfNhH+yFL0Z0QK0+gscBykmAbH8+KcjlpZVlWXf1O2O2UpXFTj2e+Oh2XQ==
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_NOTREAD
+       identifier : 0x2873c8d61fad866b
+       internal_properties : CAAAAAgAAAAi+fyjGihGNcxX2Za0A4ZTmDkXWCSO1IUQzPZbzMJxLN/zPupmnnD2vUQ/v/rHI1yO3dSdXkZJO/KNmU85qMNs1V6yI/9lhMer5WkVqqpWHiur+9xnS0QvKUTuMayxAdcbUg/Yw6GPDDtxig3ueFDU/QMtbN7TINFm/2IY6Mve6hsUK8w=
+       type : 3
+       content :
+        identifier : 0x2557a44605954edc
+        internal_properties : CAAAAAgAAADryTcE1wdYvD3vRXveAy878MY0tBGVtRJFCKec9ONjoMSjdXko/BUQ7/aa5td4J0QGwbNDZ7u6HVAmFeJiKUW3AIZke7mPEa6O3T80XKwyKxqdz/+IMzq1H7wKTkmLCftmXeih3L2wxA9F34R1rzMUewXfPfNhH+yFL0Z0QK0+gscBykmAbH8+KcjlpZVlWXf1O2O2UpXFTj2e+Oh2XQ==
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_IMAGE
+       identifier : 0x2873c8d61fae866b
+       internal_properties : CAAAAAgAAADwS/DZWPfDYnS+bvXqaK0fa6Xc9rvwlbFVBHl9Vbodp3uYIPESbqdusKPh/3E6Q1KyMGpjWK4CRFY1pXddhOg7LFfx2rpqJ+lx40FxfwjbkFjcozxQsPPvyTpojcemDOV245taHFjaDMo7DQJEODVJ6+doZxhnzsgDLH8s3v0i/ofieX4=
+       type : 3
+       content :
+        identifier : 0x2557a44605974edc
+        internal_properties : CAAAAAgAAADryTcE1wdYvD3vRXveAy878MY0tBGVtRJFCKec9ONjoMSjdXko/BUQ7/aa5td4J0QGwbNDZ7u6HVAmFeJiKUW3AIZke7mPEa6O3T80XKwyKxqdz/+IMzq1H7wKTkmLCftmXeih3L2wxA9F34R1rzMUewXfPfNhH+yFL0Z0QK0+gscBykmAbH8+KcjlpZVlWXf1O2O2UpXFTj2e+Oh2XQ==
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_Load
+       identifier : 0x2873c8d61faf866b
+       internal_properties : CAAAAAgAAAC3lVvhgUkbSZKTh44Zb2BczpwEPRMiGEopmDnp40laKajCBVxa2SS9GgVLZvqnKMiInmkxo6At8slUN0TC0IYsXt2+N06h1tnSFfVFaz9REPFVlBRmKU/14wHLYXvAjWYBQVBkrJoJ6ZM=
+       type : 3
+       content :
+        identifier : 0x2557a44605994edc
+        internal_properties : CAAAAAgAAADryTcE1wdYvD3vRXveAy878MY0tBGVtRJFCKec9ONjoMSjdXko/BUQ7/aa5td4J0QGwbNDZ7u6HVAmFeJiKUW3AIZke7mPEa6O3T80XKwyKxqdz/+IMzq1H7wKTkmLCftmXeih3L2wxA9F34R1rzMUewXfPfNhH+yFL0Z0QK0+gscBykmAbH8+KcjlpZVlWXf1O2O2UpXFTj2e+Oh2XQ==
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+    type : 30
+    code_elements :
+     type_code : 42
+     p_codes :
+      -
+        code : |1-
+         
+        type : 14
+      -
+        type : 35
+        enabled : false
+      -
+        code : |1-
+         
+        type : 21
+      -
+        type : 22
+        enabled : false
+      -
+        type : 24
+        enabled : false
+      -
+        type : 23
+        enabled : false
+      -
+        type : 25
+        enabled : false
+      -
+        code : |1+
+         IF ATT_Load = True THEN
+         	gnStreamID = LOOP_RSSStream.ATT_RSSSTREAMID
+         	OpenMobileWindow(WIN_PostList, gnStreamID)	
+         END
+        type : 33
+      -
+        code : |1+
+         
+         // Refresh the data
+         RefreshData()
+        type : 230
+      -
+        type : 241
+        enabled : false
+      -
+        internal_properties : CAAAAAgAAADol5Ry2zWO6CMuc9aS58Svq5gJdSxVLBaBm78jPbc2l8/ovPmdRYcPbjrLUcUCd2RneAcnu5lpYGP8/qkDnMcvxA92o1YK53zZta4cOYwdsSrh4DnBCXnHW0k7auD74kUexddL8kkCC1ixWQ==
+        code : |1+
+         
+         //Stops retrieving the posts of a stream if alreay in progress
+         EndAutomatedProcedure(GetRSSStreamPosts)
+         
+         HourGlass(True)
+         
+         // Deletes the posts
+         HReadSeekLast(Post,RSSStreamID,LOOP_RSSStream.ATT_RSSSTREAMID)
+         WHILE HFound(Post)
+         	
+         	PostDelete(Post.PostID)
+         	
+         	HReadPrevious(Post)
+         END
+         
+         // Deletes the stream
+         HReadSeekFirst(RSSStream,RSSStreamID,LOOP_RSSStream.ATT_RSSSTREAMID)
+         HDelete(RSSStream)
+         
+         HourGlass(False)
+        type : 222
+      -
+        code : |1-
+         
+        type : 65659
+  -
+    name : IMG_DevelopedWith
+    identifier : 0x2873c8d61fb5866b
+    internal_properties : CAAAAAgAAADawQyGpzXlHSJHCVQEYcXL1BMpzqntOU9n087rkHirpFDIjAjiq/J/YgL+svVejSWR7y12Ah2vCoMy5mSMApGuF/bW57W+6eQE/RxSZ8a/Jc2kpbE3AzME6zKK9fuy235J4vnp5GpER3n2tDzpG5QMBm5FkiOGsvX6AeOjdtoD0fRwfI2gmNLjfmqT3/X70YNrKnZ0MDpW8ydHGYYhRad3rjHfBdL5VT1mXEkTMH7JLoPjOwWi4QQfX0yi2gRVeOQ5GFgCtp6pAZm0R6EhAQXoSRzY1LY7ZglyNwRkL6CHJ2wm7nBM8bbuCsUp/DQmkxW/267wCMuLkvYgr+8LLWbO9cvgJrNbCYgvRw/7NWF0UKEW6WZwmYRN1pS17QXYHgxsqGDcU5EA9bmZz+FX028WY5Bzz49ZAibNWdETfgfkd/OPk7S2jy762kx7hmhKHQcSznuxWRCOBqwX89G9FnLYCOwMFMv8x0hUuRuLBJB+AjoyAKb3JsFqKoR7ke/8hhbNPtlGt/5zzq/no+vZcjzmM23Gx3/0B6qzVrzu809D3JZK4kZM9fPvcu6EJzPwlbHmuU3B3rj+eJkNgpvdXoL54ZZZAedyRsfoo2wosJWiMGjG5qhclG/o50h5M15v8HnWNIv0JvHsLHdEFR6H78pbbugtBzMLnHOq3pP8Sr68/ndfVCecCHBiEEp7xjDZbkhOc6dLs97tCP2cpsSVVRbLpzNTZvqCES42EKci55o6Y7nnDLiDgeXfaHQZNmeN/camA2C1PO1aPBTOIcjX3VSRipkXoNqwD5sDr3K9sBKY8yvOEouusSMhh4049cAGc5CX6Ii52H4f3jSNVLa6J7EQtc82NjABcSOTH3y3G2qN0EU36A/lFUev+OR5EUUCV43GNLgmrm4Aia5bImg62XK6IbVEQZ8O6LG7HnBe5DR/nV+h9X2XXi1C8f6+55J4FZzKKE9S8j5eYB7bPZSS3+REnhbC1EhlzlUo7y8tQsFexlhOUK/ZXA4kmxK+ADcuojDlqolyBWABQmbvStTKutY++3PZ5a4UOp8we036VvxBh6MvbP1BpTeFFo4vhL5Bn5h1DzCqmPlDVPJ7CVCppKbBzH81MfU=
+    properties :
+     x : 212
+     y : 372
+     width : 100
+     height : 29
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes :
+      -
+        code : |1+
+         BrowserRunApp("http://www.windev.com/windevmobile/")
+        type : 18
+  -
+    name : IMG_DEFAULTRSS
+    identifier : 0x2873c8d61fb6866b
+    internal_properties : CAAAAAgAAADTCZYXjEDpJDYvHtmUAml6l215k1JEfDbttwA1hiXRMQN4nAqz9y0pLEGwH7+rYusPje57pXWM7cHtEHW/h1rUtEIaFvOdddLP2ONiTRzEPRrMjbr+MoBpUewtQknVWHTM7AFthTwWcsrJOIsiUPumau2bx/BO8Yu8eMWrLbwIxQDSjSefZHSIHFglPVX9eOpoSDyAqvcNEemi2FfQ69z3II5fkqj1Y5bIQTKMIIR9jJvbSVyVCj1yurzmLzQbANG+K3KbLjCZKwhD9g/U2hGWa0k4jJGmHNY5tt8VaJQAZ2oCWzbs4MKkR/RxgiitCvtya0DUZ8QvVVCvE7ZeOKGugeiSAdJZKJZNhQ6T9LLpbMwBCklCMOBbketP8iCeb9VNj+6IoA5JAdVurZI8IutuAY1EO68KTpWYMjAO/Oa6wRunL1oh1cxMZagw2MWyoJNbPJD7x6MdaNatr1ljlO/TrlbM4EY5Ka1KkMRx4gpk9gvIiv/RDV3d3x2F8HzMO1VJkbQLB6qGZgJ3ApNJkQxPBRGWu76LBUJJqltnl6BCh26BJtImXQMy3vwnaEEEOAKq4mVC6aeyGwJ2Vovd0JCfUNJrvxJzLCpOWC2ZfwSUWjaQUUS2ZDuKFxtsOMpohq0xHduxv8X4Ub9Wf83VP9anyCiDvynZaebqjvkrDpVBuwU1Gzmtrf3r8O041qAXzSjFRfVNdZCJc2dF1f9tluZb/zHRAiZHdnlJNuScczZ5FZSFiXz7NHLBME2Lm3dzj/h0MpV9x1HpAjC9Aobj5RCk8PRU0qN6+WJkztmKBk+wPvkU8simUu6mrD50mkaXU6HDHWyxRuZ1JEigcCR3dJxTb2Clagx+Vv1R20MxbW4MTXxjvAqBi2+y56dohcvExqHbEGHEGLIFjn8sSzo6GfY9QhG0hCd5SEjHW7qTTo6M6235cso6QqwTsAmafaAG4CWsXoM3lrQXdKETPt8/M+lgYE7/4yk9NF2n11KdkX8BemRL24Ih/OePmlNC3mI5viXg4XZAgVyGVr4JBv1i9EO4Fee4owtvp2ifBYmDmjQkbLBULQTDMyKkF6azojKNzXRCMBUteS+o
+    properties :
+     x : 9
+     y : -116
+     width : 16
+     height : 16
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes : []
+  -
+    name : PROGBAR_NativeCircular
+    identifier : 0x2873c8d61fb7866b
+    internal_properties : CAAAAAgAAACvJxSIH8Ybs4q8zVwLTHNzP8/JI52nDt8KYUkphy0DXstTPjU6GeFQtQeZ3nMJywsfntlJWU0U+tBHqYG6OPKYHhv3RPCh8Z6kKNIK8dyLIX89dlQJlZdIvTqOsZx56DQY61EwwZX6g/IvJ+8EHHlRq/Zo3xXqaogEqdc0KxBrCR5DQqc4z1n/rux7gbyZddJrw4TM65i+C8DKdtutJuklqByvbeuS9UQ1AvwqZ5EesV6YAmAU9hTaQ/G8lDR6lVNSmsmJkMwekOxWUqaWdak+VWxopmF+7BliTBEe0Zn/ERrOCcNAO/WwbXV8oIU0CFpjNsXGrAmYDUtEVsp6wKjkkZ0X058VfIu/XHMgVjxZ7LBjY0Z5T36pxBvnn5z64p6wkpTHd9ss
+    properties :
+     x : 136
+     y : 152
+     width : 48
+     height : 48
+    type : 113
+    code_elements :
+     type_code : 136
+     p_codes : []
+ actionbar :
+  name : ACTB_ActionBar
+  identifier : 0x2873c8d61fba866b
+  internal_properties : CAAAAAgAAADIOjIpkkH0IUuop8V06YSb2BO6Ku+cyEV9G63r+uQ60ZKLtDl/PGmWAwX+0Ktp9qCcPxb9mZiVjgsk5d8J6gC+AvJN49YPZ6vnx10ZbLCPp86Ue9VVOMqz3FSVN4iOFjJUF0eptoCoQpVqDreGwOaZA1sdqWZA5j/Lm0VcSfGjjLZMKOL1WFz6eQgHzszLCPTj/WKaOwgcSk7QlRXEnXqxfp/ii6iPuWZo/hUWRS+u75FvDc7DR3bMj3SQo/eEcVfIl7WslSwsALBDjy3Qzb7ZrSbPmMN7q2MB6U2J1kstFCJHyw==
+  controls : []
+  code_elements :
+   type_code : 125
+   p_codes :
+    -
+      code : |1-
+       
+       IW_SlidingMenu..Plane = 1
+      type : 18
+    -
+      type : 229
+      enabled : false
+    -
+      type : 239
+      enabled : false
+    -
+      type : 240
+      enabled : false
+ menu :
+  name : _Menu
+  identifier : 0x2873c8d61fb8866b
+  internal_properties : CAAAAAgAAADgMVTORwj2Mt8z/R5WRL0mTVIMDO11ij5YdBwcO3ZAw8tWdEBL95DgWGGgMGBRKql5dANp5Vg/qpNyJvJQ8sIrr6GzC+masJIwyV5P7DpW0go2kGsf4EvdW1eqlu6V7I5EHVrMjd02cTaXwP0dbd1DSbdsd/Wxk0ScMGI7Z0eDsGOMLRfieoTYskOjcLtA7tgFoR24z+3d3zH3Bloaoqj6XKllvOzqHQUKs5ikiJtsiZpXF9leDIYykRzjnC4k4qQVjthAFpugw+diG+HfnEMv+L/rU3DRjlIiDq+0aeUP
+  options :
+   -
+     name : OPT_Favorites
+     identifier : 0x2873c8d61fb9866b
+     internal_properties : CAAAAAgAAADjPwmT9YkrKBbwvn7mnhGvyOIkVn83jxoD8p1zg0FHcwkid5s1hr5fPdfiPSpaN7SnbbFQXlTbbjX8hwZK/ZrfJwQsnD0ScHlD60c9YF5sJWAa37LDIcqBfYJWXfku7LVSLD88gQkH723EN+K0V9eNQj9BJnHeCmJVjIAJEI6QZbay9qcf7Yxg7CTTn6XIh2QAL2bhN35wIktVaZqeNl8mNShGLGojFYkQr8TXvI1IzZi78k5Ci5MaSEIsyfNlWAsFO2jy0XgJnQHghO21+lKmb5LhjtECAYQ5XSa5LmHSYwrQvffEUrVxB2rPARPu1+xy8NvCvGbJea7AOT7IU3mZR5+RswjUxgTFrfpSSKNFXs7oPee8eaqr
+     code_elements :
+      type_code : 26
+      p_codes :
+       -
+         code : |1+
+          // Parameters of the 'QRY_PostListFavorites' query
+          QRY_PostListFavorite.pFavorites = True
+          HExecuteQuery(QRY_PostListFavorite)
+          HReadFirst(QRY_PostListFavorite)
+          
+          IF HOut(QRY_PostListFavorite) THEN
+          	Info("Add posts to your favorites for a quick access from this option") 
+          ELSE
+          	OpenMobileWindow(WIN_FavoritesList)
+          END
+         type : 32
+  code_elements :
+   type_code : 26
+   p_codes : []
+ languages :
+  - en-GB
+ popup_menus : []
+ message_bar :
+  internal_properties : CAAAAAgAAABaTc58N/vBqwlwoHJ5/x8SHkaJqAy2Wcny8nh41SkL06+yd2NIGtdhtxGEx/jsdvPbeZMKh4UyokrltfpNoZttyCzjD4YTDSPD5w+jdNs3ODxlPXTOXeRJYhMb
+ code_elements :
+  internal_properties : CAAAAAgAAAB/EAyFDQzT9nNVNRP9+D0gk0HexMdKZ4+gNmOn4ccHaueZ3jasTnDHdLoJ9Kzv3RjiWnpqdxcMPhVovmb938KQ8BIpH8Ia63I9FQ==
+  type_code : 1
+  p_codes :
+   -
+     code : |1-
+      gnStreamID is int
+      
+      CB_RefreshData()
+   -
+     internal_properties : CAAAAAgAAAANK99aT578pqrY5vHKk6We4QlF1n4phI60i5kiJ2ajIXqY8ANw+K+Ev0qF5XyF7/X5nkR47wx/A9HQAdXUtV09qS9IbkPPF7nTWSaUTtcQidvXNTL45w==
+     code : |1+
+      // Automatic process of exceptions:   run CASE EXCEPTION:
+      //
+      
+      IF HNbRec(RSSStream) > 0 THEN
+      	
+      	//Refresh the data
+      	RefreshData()
+      	
+      	
+      ELSE
+      	
+      	PROGBAR_NativeCircular..Visible = False
+      	
+      	WinSlidingVisible(swLeft, True)
+      	
+      END
+      
+      
+     type : 34
+   -
+     code : |1+
+      //Refresh the data
+      SWITCH MyChildWindow..Name 
+      	
+      		
+      	CASE "WIN_PostList"
+      		nSubscript is int = LooperSeek(ATT_RSSSTREAMID, gnStreamID)
+      		
+      		//The user probably read the posts, refresh the number of unread posts for this stream
+      		nNbNotRead is int = getNbUnreadPosts(gnStreamID)
+      		IF nNbNotRead > 1 THEN
+      			ATT_NOTREAD[nSubscript] = StringBuild("%1 unread posts", nNbNotRead)	
+      		ELSE
+      			ATT_NOTREAD[nSubscript] = StringBuild("%1 unread post", nNbNotRead)
+      		END
+      		
+      		
+      		
+      END
+     type : 177
+   -
+     type : 180
+     enabled : false
+   -
+     type : 230
+     enabled : false
+   -
+     code : |1+
+      
+      
+     type : 2
+   -
+     code : |1+
+      
+      
+     type : 11
+   -
+     code : |1+
+      
+      
+     type : 12
+   -
+     code : |1+
+      
+      
+     type : 17
+   -
+     code : |1+
+      
+      
+     type : 13
+  procedures :
+   -
+     name : CB_RefreshData
+     internal_properties : CAAAAAgAAAC/+a7lEY1/ojCbAJxBtWJJkkdvnC/YTJk3VUZ03OHJoefKCDz95kUddoXj+gg26wTtGOjoBh7rD+taQXIDzalJgISdyKQFne9NV4MZYbeD72Dzwbp5zas/vjcG8vGphefmEf7ryL76HtDiA1g=
+     procedure_id : 1761972700730525291
+     type_code : 14
+     code : |1+
+      // Summary: Display streams in the looper 
+      PROCEDURE CB_RefreshData()
+      
+      LooperDeleteAll(LOOP_RSSStream)
+      
+      sLastPost is string
+      sNotRead is string 
+      
+      FOR EACH RSSStream 
+      	
+      	//Retrieves the last post
+      	
+      	sLastPost  = ""
+      	sNotRead = ""
+      	
+      	QRY_PostLast.pRSSStreamID = RSSStream.RSSStreamID
+      	HExecuteQuery(QRY_PostLast)
+      	HReadFirst(QRY_PostLast)
+      	
+      	IF NOT HOut(QRY_PostLast) THEN
+      		sLastPost = StringBuild("Last post on %1 at %2", DateToString(QRY_PostLast.PublicationDate..Date, "MM/DD/YYYY"), TimeToString(QRY_PostLast.PublicationDate..Time, "H:MM AP"))
+      		
+      		nNbNotRead is int = getNbUnreadPosts(RSSStream.RSSStreamID)
+      		IF nNbNotRead > 1 THEN
+      			sNotRead = StringBuild("%1 unread posts", nNbNotRead)	
+      		ELSE
+      			sNotRead = StringBuild("%1 unread post", nNbNotRead)
+      		END
+      		
+      	ELSE
+      		LOOP_RSSStream.ATT_LAST_POST = "No post"	
+      		LOOP_RSSStream.ATT_NOTREAD = ""	
+      	END
+      	
+      	StreamImage is an Image = RSSStream.Image 
+      	IF StreamImage..Valid = True THEN
+      		LooperAddLine(LOOP_RSSStream, RSSStream.RSSStreamID, RSSStream.Title, sLastPost, sNotRead, RSSStream.Image, True)
+      	ELSE
+      		LooperAddLine(LOOP_RSSStream, RSSStream.RSSStreamID, RSSStream.Title, sLastPost, sNotRead, IMG_DEFAULTRSS, True)
+      	END
+      	
+      END
+      
+      
+      // Stop the hourglass
+      LooperRefreshVisible(LOOP_RSSStream,False)
+      
+      
+     type : 458752
+   -
+     name : RefreshData
+     internal_properties : CAAAAAgAAADEB8HeItXL+6qqhuEuMJEumOPjLyndyWMql/+SrT566F5JC6CkU17ILDIxreeHoPxTFWpdj72uP4OSyHDmg6MUv+t5fKYtcPkSQSyM9tofUHU+X3DN4aLVAP9tjYam1K1XKmg1Gc+DMJkhNGTtmt9+g0VkQr2Zh3r8k6jf1PN6jLamtbI=
+     procedure_id : 1761972700730590827
+     type_code : 14
+     code : |1-
+      // Summary: Asks to retrieve the posts of RSS streams from Internet
+      // Automatic procedure:
+      // The procedure is run manually, during a call in the code, with a time-out set to 1 second
+      // 
+      
+      PROCEDURE RefreshData()
+      
+      
+      // Check an Internet connection
+      IF NOT InternetConnected() THEN
+      	// Identifies the error
+      	CB_RefreshData_Error(ERR_INTERNET,ErrorInfo(errMessage),DateSys()+TimeSys())
+      	RETURN
+      END
+      
+      FOR EACH RSSStream
+      	
+      	
+      	nErrorCode is int = -1
+      	
+      	stRSSStream is structRSSStream = GetRSSStreamInfo(RSSStream.Address, nErrorCode)
+      	
+      	IF nErrorCode <> -1 THEN
+      		//An error occurred
+      		// Identifies the error
+      		CB_RefreshData_Error(nErrorCode,ErrorInfo(errMessage),DateSys()+TimeSys())
+      		RETURN
+      	END
+      	
+      	//Ask to retrieve posts of streams from Internet 
+      	GetRSSStreamPosts(stRSSStream, RSSStream.RSSStreamID, CB("WIN_Main.CB_RefreshData","WIN_Main.CB_RefreshData_Error",DateSys()+TimeSys()))	
+      	
+      END
+      
+      
+      
+      PROGBAR_NativeCircular..Visible = False
+      LooperRefreshVisible(LOOP_RSSStream, False)
+     type : 458752
+   -
+     name : CB_RefreshData_Error
+     internal_properties : CAAAAAgAAAA0UUgp0hLLbmjIR9M+7sHKMZB+WU7AYX+GnFcne4RWqAKWmg6yhDxryusGz9QXKWttor74ynh/OlzIXFAMGjCES46/cX6I3nrFMtLPZ2jVkx4MBPuUqmniTaw8/XICJmNv6lCvV5ldsscsb8OgF7g10Nq5uRTIkwy2qTU8e1z0fcbMQ8DCYpVU7zrBGhOMmkLq9GmRXxKZ5zpDAyNEoq6olVC5Tg==
+     procedure_id : 1761972700730656363
+     type_code : 14
+     code : |1-
+      // Summary: Callback called if an error occurred when refreshing the data
+      // Syntax:
+      //CB_RefreshData_Error (<nCode> is int, <sMessage> is string, <sCsutomData> is string)
+      //
+      // Parameters:
+      //	nCode (integer): Error code
+      //	sMessage (UNICODE string): Error message
+      //	sCustomData (UNICODE string): Data that can transit in asynchronous way from the caller to the callback (for example, a subscript, a constant, ...)
+      
+      PROCEDURE CB_RefreshData_Error(nCode is int, sMessage is string, sCustomData is string)
+      
+      Trace("BC_RefreshData_Error: " + sMessage + " - " + sCustomData)
+      
+      // Process the error code
+      SWITCH nCode
+      	CASE ERR_INCORRECT_STREAM
+      		ToastDisplay("This RSS stream is incorrect.")
+      	CASE ERR_INTERNET
+      		ToastDisplay("No connection to Internet.")
+      	OTHER CASE
+      		ToastDisplay(sMessage)
+      END
+      
+      // Stop the hourglass
+      LooperRefreshVisible(LOOP_RSSStream,False)
+     type : 458752
+   -
+     name : AddStream
+     internal_properties : CAAAAAgAAADYm3P9W42YS5zpfIV/qVMGtsV2mEIshAynmglZBbJkMEcW3fWgN1T64hOe1C0ltvEUk39WWKKh3pry+k39Y8P4XtgMCalX7shEn7fPxDGVh1JcNgQUZduomMo2HiEgJ/T0buoH3bTG7kk1m9GHyGYuWm7GSBqO2YXfizvQppAVZu/RWQ==
+     procedure_id : 1761972700730721899
+     type_code : 14
+     code : |1+
+      // Summary: Asks to retrieve the posts of RSS streams from Internet
+      // Automatic procedure:
+      // The procedure is run manually, during a call in the code
+      // 
+      
+      PROCEDURE AddStream(LOCAL sStreamAddress is string)
+      
+      nErrorCode is int = -1
+      
+      stRSSStream is structRSSStream = GetRSSStreamInfo(sStreamAddress, nErrorCode)
+      
+      IF nErrorCode <> -1 THEN
+      	//An error occurred
+      	// Identifies the error
+      	CB_RefreshData_Error(nErrorCode,ErrorInfo(errMessage),DateSys()+TimeSys())
+      	RETURN
+      END
+      
+      
+      LooperAddLine(WIN_Main.LOOP_RSSStream, RSSStream.RSSStreamID, stRSSStream.sTitle, "Load in progress...", "", stRSSStream.bufImage, False)
+      
+      
+      //Ask to retrieve posts of streams from Internet 
+      GetRSSStreamPosts(stRSSStream, RSSStream.RSSStreamID, CB("WIN_Main.CB_RefreshData","WIN_Main.CB_RefreshData_Error",DateSys()+TimeSys()))	
+      
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAADeQcze1Ixqfwn6yOfjwsQ7IKxuiqMzbTygTLeVXFH8DB0WqXgSKvkzRoO0/Z27dfrh8D+BLYmMenjdtZezotw6hJf2mE4Gv6OctA==
+  original_name : FEN_Fenêtre1
+resources :
+ string_res :
+  identifier : 0x1b5830780002a183
+  internal_properties : CAAAAAgAAACyXVFaObH4lOGSEHJoZf1MD49w+XTw2LScZCP/urkWFwy+HYJdyQ3umA==
+custom_note :
+ internal_properties : CAAAAAgAAAC68/W0/adbG0nFCRhrE42B5HRnbDzVHaz86sSQyxlBk7I=
+rad :
+ internal_properties : CAAAAAgAAABoAN7PLpwJW3EiA7WVZdCA5EwrCA1rvutcDHooMWKe

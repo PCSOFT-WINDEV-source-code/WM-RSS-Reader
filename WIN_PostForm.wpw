@@ -1,0 +1,466 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : WIN_PostForm
+ major_version : 28
+ minor_version : 0
+ type : 2
+ description : ""
+ subtype : 0
+window :
+ name : WIN_PostForm
+ identifier : 0x2873c8d31e71795b
+ internal_properties : CAAAAAgAAAD/AGl6WvvvwMHCDRhyZxpFGrCELrLiLtIUC/fvtwBspNGTcDqRDPksrAmPIxKjyhlItNNEm7h6ZaXYoIjU9/VYNZbW4Ucfjh1d3K7TFwHqlTA+tJ3/m4YFoq8WEIZRv91otlbPYgr7RCyFI9ss/tWd8Rz5RXnx8tvS0NXFL5muu/dHrZ/gHvkG6XeTVyiuVlKGksYxQrd4ZKy2RrKcD5wBVp5bvCdi/p1gEYTzNdipqDUPawQ7BOi5NMjRbdusdRKVDt+RAd+LprG2gyHTIkAGJPAwY+4y2lSdZHegDUOnFu9CpmV7TKPPzd22N7FBYvtvhRPM7RWPmpfCe1yRyaIXobnTad4gafohXwJx87KHu/Oyfzj7Hug/vfEYUyuD+NV2dU1EkOmiQTt1R+FEMuB47f0xburxOwRNETkboOusY6odWMbmaFyBtDMyDwCc/eFY6R0Ud+2A4UJJpZWouFFaosDCPXZxX1GZi+nJ77zxK1xQbMMpEtc8bcmzR5snPPHdF9V1sv8LY2NCneyNAfLwWrFhuQvWy0zlaSKGT3D3g1y86b3JQsf6Z0vaPFGDwFXTseGtW977w5SisqfFhvvjvlyir0vaCNO8sO77SRjALI4sgcS25eU2p0wmNQQ2MwyCUu/Z4UsSu8TLqHfRLiuO34zNiY6jy/YB9dbq0I26Q2s98gTF49seqielXQ/A6WlnrdwAcNVO8dgKxxpSPrNMor2snsvdnlDBRcEywJwjafQuYdz5wX0PQtI39pC7NhH015nCs3aNUcZIKdvvPrTN9STa/ulvxLZ8JUIpKxXA/Ra+GPU4raBk9VQJvKUOPUCQajbYZUJrry5T9nEGAWs6xbXVGT3iprSRQTz1wj0VYUCkmbsGFxGlRAgXm8A78Ouglw2p/iZBhosnyajF4SbIBBGaTVfOdGS906YudhUTDdLHxj0tm9+Bbs6A5CSwdlhex+5s2A==
+ properties :
+  width : 320
+  height : 407
+  heightMin : 480
+ controls :
+  -
+    name : IMG_DEFAULT
+    identifier : 0x2873c8d31e72795b
+    internal_properties : CAAAAAgAAABr4wiOQ88k7lTf91I3ZhAyIIQ7W3XbsI2ocEualtk2j++lOqDx7ZsYvCfixm+LMokLSc7lD06m1y0HysYbgbyiEWVQicYvdC3P+4tLjj6TENYlhrvfmGIrkwHo5H0QFHrPSlGFk1cvxxXQDHaHSgqqzsV/rKo25yR0mjfer4TzjkDbu8DffYVlhrqwLGLxUUDN3BLUTl6kokpjt1jTe4d7YxSNFlhQzn/8ij8m//1QwcxFhaZC1e+sqGcqulFUJEvruBlWNmHNLuNrl0vhR0lRSUCeermXC+ST+YSgGsaZIL2DfiA/1THSGyR9g1uoII1LI/lrL0RIGV4K6DPG+UzHnHsLIxp9Hyhibkrz55NW5x8Z7mlXicOcUodXdcaGDGve8I6AxSWjVcV+Ir5XkH/nk3mM2d7uvrFduHr0cFvesXrdKRZgb576+uQwP0X4mkYb5Ge+6QR17zKfCRaRudjSOQ5FGMNh2QHkvneDf8+KqI7hMhMrwpW6VGxZFIcV+ZXP8cyZLhkjB3f5zB+1GZP599bVxzy/Bmhjsccie9vX9Cq9gaPOlspqKxBdAD8DYaMADqtlsLYMP1CJVK8Mfqjzmsr+QdbBplSU+T8ikM5C/yz28ySTUJCZosjQ08oaLA5ScmFN5S+JsQhu8xRTu0RPW/Fxj20rBJI9IwfW+t8euRUw+JVZ9Q62daOw86nbZW8PAlTBNGKG7FVT0RiCPoukpdyG/2TQ1U3C7SKUM+E+WvXVMX2/nQZlP73Hjt3xxDxANKZp4aRz8QY2hvE1IwVW13WwoLI7egsMu/1V8kQRlN7exfeiL9C+lAiMoYiZzlE9i6hC1XRMvuYBsIxgWPf2bNXuiTodsC6ToXWdAst1ui+oGVF6lKQvzVzpfoenA4tyaMu4JUSPhPsPLvPcAoCBngdSwbScXf5cwPc3RbjP2mo3b24QgshhDzpgbGF8SrQU9/5G7ukeINsWN2IHNmFSjFnq5cg0xyxCxqShdDXPEXgjk6tbHMljMpvUL+PbJgxkKwwuTLKj4nfCPyT9xnw=
+    properties :
+     x : 2
+     y : -91
+     width : 16
+     height : 16
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes : []
+  -
+    name : STC_Date_time
+    identifier : 0x2873c8d31e73795b
+    internal_properties : CAAAAAgAAAC76tRFnVqonxxZpLlosunsN988eKjD9HQqxZ5IWvud0vn7AfiCDNF7RbVgk0BxGzIzbAK57MtCRMqngo3c5FYatk3hXWDc9l0sXwRZ2m2DyFWe41XJ9SV8ES348YvbePGsKFggSjvj8yTRJnrC3ORapPzsdERp/7O5t3DuRm2+YFYDdeLu2uTJ+ig19XoZZmLTY1Sij4L383UGi8aLKYuTpeW+QXngfs3NH6FkoE8RX6wGXemKqOWtGasf3oXNHNTyQ0gKp+4eRC20/I+A1gMTnBEzC8mJo5Khmk3/gO60sWLOHhFE7lUi+WSvh/f2dh5sDEavRxPeLL9NnWTUVGdcOKUDZtUo8Ykn7zaHsSbvY3h3fGF4ziIzs3BysE2iMsIzp0H/cH/zGM/TbAyzJaGL77IRXdN7emhD0hqDJ0QUbJih0ItOteMxwDNIzl97l+Fq3QiZtXSGNWIpB1w=
+    properties :
+     x : 8
+     y : 65
+     width : 274
+     height : 32
+    type : 3
+    code_elements :
+     type_code : 2
+     p_codes : []
+  -
+    name : IMG_FAVORITE
+    identifier : 0x2873c8d31e74795b
+    internal_properties : CAAAAAgAAAAHRvtBJQug2ndlmXpyw7TGaV2wYm3OOumKn6NNER8DrPuANRXqpScHeENmGH1sx4ERtRR504urSlf5YUwrT0SojuHKF3B3P5sJ5akB9oBIjIymAVxM5wXSitBfbQjimupBKb9OyPYyaRy2c84ymtPLz0COjmWNRKiCRn2k+8oCqQZphTkMjpAJcaR6hPPIvc2Lkvc90CP4kEnqQksKvLXfg+Fu3OaRUKghZExARAnSBKDA1pP0gPqThBHPjGeDYlTHLD3Bz8DaJjJ9RsNVlYRzPu/2hgnu1D6ZCUnfbd02hDJVzVdu3eXwyO1D34ahgutlY4XSIPzDqoBF0lfVacgBvhgpvvQXNqkxuunwnXVY/Wn9QrrVie3wmuXlkqQUMRzKV45r1E3eomzueuR0emW6phe3cUy684SEns2XashrKgsJnssoO0k0eTzDD5wQJMaDn8Z4q5vF8KuYdn77nob3Tg81siFiuYjCtCUUBfjt9mbCWG5TSyD4HHiP9qVdd6UGU22g+f4lNCBBzHZwGrUc5LHuOcz7YjRCCiX5FFN4SYtv0bqhBH4TKNfGw+Ri431BHEqxkruzK+vGy+U2kpCKq/9pGN7qYjCCqpblfOpOOXMkdTMl9vmzOuPnBXYyw+EQXW1iInauKRhvRH27BWpbQPVoL80CnxUqsN3IX7d0wPlf6Y/n86v1JQodQSqL3ajxmDtD2pe0nqn2V5PF7aOPj7vnt2pC5+idzf8zXQKkWqIlD1ngCFe2nqUEzbVOEuG/FEaUg/zrY8yTOPmQeu431lsEGD2N/nkoaXmSY2A191ChTk8KvuCGa5+zWrmJyBbckS71bSoaz+CBSR/OYyKxxeu7thV+kEw15e5kFmt64vPBVMHgTJy0jaOc5x5NFMj2Yc/lfrUMd+xtvepvFkgWU65L5glhjQ2nS72C7nB8TfN6hh9Pskpf5e4uATzWat4e8HfwfAMpoc1q0PV2QA7p5ZLtv9Qb3J8qSP1Y3jdy+jC12JtdK9Jaj0gNCeMuqbyNtbWCpUr5kRM+W5lylY7fMwAKWI2xeTjaue18CzfGpwoo5A==
+    properties :
+     x : 286
+     y : 68
+     width : 26
+     height : 26
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes :
+      -
+        code : |1-
+         
+         
+         // The post is not a favorite anymore
+         Post.Favorites = False
+         HModify(Post)
+         
+         
+         MySelf..Visible  = False
+         IMG_NOFAVORITE..Visible = True
+         
+         
+         ToastDisplay("Post removed from favorites")
+        type : 18
+  -
+    name : IMG_NOFAVORITE
+    identifier : 0x2873c8d31e75795b
+    internal_properties : CAAAAAgAAABIFH9VhV2q1/EfRIB8BE9o0LL+8buBjWs0WQiXGlz1ZB71IYyoC/09VoYtOXlWdNwENdXEFv2iVGBSnwhlO00X/fGK8l0zTuiIALQZOZPcGZT1P+dUwK5uuGtpmMNZFbATccQ2LWo128R44lS3wxfhf7164ixAehk7pwxBfoReHQ1w2lgjgZldP+wZ6NyGdXxiWOOjN9uR+9A/+4oQvenuUEHn7M3qXe30iqXqFrzE3z/4VuTCVTVLszu69dnAdUCq7RV0hDRiELDp9qeWXvhBh6SM9sj/EwqrJl3nbyMMe62/gvvSn0nDu7iJH87GlablaBWm4iXvcgbC7S6ncrvV23EILTtkE9jfzvsSElp2YicaNaFjk3xZ05kd2/NMpFykqlhjGVSPs2PkRAgjCd/6QYQTPNA/VimKLEKPndkcXYvk2Q12qx9er1sJOrAM9UzvNWhuNYAEKj4JEOplxEnF+xSJvT82AFMtHyhH9NYhvAV7LxS1Bthly+mVP00y3WUr+6LCvA9GTUnO3AZWBL7UcldYV+P3kVhXYfpotUm78nzI19EW2DdtvA6VrOf+YM8Fcj2Jx34AsB49+icCTvfKNIhzEuFvljJNVWAEbbmD2oqcXq1GTAUJItGgV8DJdGsTPuxZxll6TN/riiWnBbta26GrUn8a9/h9iaxtdTKB3/81pp++HF3vKdV1FxAvgvEF0WKDwxDeIe3PEt2tBgRX6GqUNkuf+ZfQlxnwcyoDBQ9ENS6E/0b9Jn0buzTOlX3zQ7rOtU9tFLRf3eDOMDCvN6OzHyi5jiLuU54GmjfGMRB2Z+UeX9xhnOHGKiNPb7r+4jrGovoPs9h8gwFigyco7Ddu2AkshkhyWoVBeC2O+QBMx3CPKqW3i41NIseppRZUIwEEcJpPYtv3cXOn8KXEKMipt+dn0hZLS0g8S47SGJweNdxwGXtJrGc6qlzlXZ2M78s6m+C76LxJhh7ryAH011+AoHlyTgwy0tVkC3fxh80wHL0DoOx/ah26s480XYgD2EMbU+o5i+IbrTnQWOHuE8tExnWfygN7IX+24ccHJuZOnabi/Es=
+    properties :
+     x : 286
+     y : 68
+     width : 26
+     height : 26
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes :
+      -
+        code : |1+
+         
+         
+         
+         // Switches the post as being a favorite
+         HReadSeekFirst(Post, PostID, QRY_PostList.PostID)
+         Post.Favorites       = True
+         HModify(Post)
+         
+         // Modifies the interface
+         MySelf..Visible = False
+         IMG_FAVORITE..Visible = True
+         
+         ToastDisplay("Post added to favorite")
+        type : 18
+  -
+    name : STC_POST_TITLE
+    identifier : 0x2873c8d31e76795b
+    internal_properties : CAAAAAgAAAAnAbW04ctWZa6xJDu+AHt1AL5Sd5YM8+vGSpi+YASZblVnuc6mkHuxtVVxHRVYA9gY4mp1doEeSE7SmksaK6AMxIMyRVWOcDvAa2KabNcZJgz+6TGDAzEGUW650nh1xPhSgjEIn27N63QUBrst9VqHFr9eTpBcs3dGobVUX1B/2dZPuEYxP6ZNZUzV1c9r1HsBQWRwUgxlJF7/dYIxjquCoqVTrsXgQeW6oA0gj49/mSZs1QTiVgj41NeeZS07vztHcP25M01fjp1MKLbaB20L+b2oVxCVfWUOoHOxZNCyxnfx8/e+kXjGatLrrjQ8mLR4gzM5wrVAEiQWS+XBOL6Vhb6sIEq3lBoKkg/PxSLvY7eKBcInXwGJxRP1D85BnGiZP4DUyyQM85Ri54ibr6qbbf8AfFyywcEWDdGqDP9GQGphEypyeE0Fk8S6We1n+ckAY9q9X/Cd5gKqm8A=
+    properties :
+     x : 8
+     y : 2
+     width : 304
+     height : 59
+    type : 3
+    code_elements :
+     type_code : 2
+     p_codes : []
+  -
+    name : BTN_VIEW
+    identifier : 0x2873c8d31e78795b
+    internal_properties : CAAAAAgAAAAeJsyP6BovFGgi+K2dNqFPe7l10XMlIEclAKPDCyF1YCRIy8/PzXvFDKNEAyAGhU+bVJLyr7wqw0R8hfZKnPgT0ogOarCN6E/xSQNSMRJe3TnSjGBDnKvAAKIvGpLYkvrgvxzJ+z2tDT1aDFQI6dml+pohtcq5sMJ0j0EiezjazWMuNnPp08G+JpFHj9p8WrvoC1/oC9s5Gtsq1ncgQGbZCB5q0yQ02n2CQBI2we1kYp8O7KOCbuwoi4Rvcpr3DVigJC3mAz95JPi7koXmLFCgyesjo0QQI+lmrzuTGZ0ZxByq81w7dl73Z7psS8fVo19B1S7dvZwQP+MpAVjQ/GdNI5q+deMDf+LFawyDlZliFXhScWR14diK65QAl1pEaxk/gJCAsJnq8dH0bUUr0buk39dLlETI9bNfx7qvV7FrtFosBW5mIC5ZIi4ltEaeqZxt3lZtsscHj9Jymx7e0E6ZHqvT15TznUv6VaWfywZr/kqsDiZTSODG54m+Ik90e4DDW8ZyHrjHgrRHCZfsOqagPsbWtojU/usuH5il6gJCFBcyDsSnGqm9sR1vZEzlrRE7nVhPHuCP96jUxLbHIlzc9NTrCu+SkDn0WhECo0XPVRQyRIiSZZo4EAaQpqT3XBAecXHNDyOD8ip/bggKf9TcdT9/iz58lXO1afg8vy2dOh1UdHdKiLQK52hD1HKfPfdBivAJj0+zAW/LHq/YKgYVYAPpZydlOb/YtmX3d1yCy39ghTyHrxfXTJyXtub+8Ec5Ja2iIbpiPlmD34LvEudQVLWuUpk0OoJkUHnMZI4wOoVoTi5xJETiL20D7CUi0gRXHHwrNUYiPBF5o45Dqu/JSej1ADlTDhv61rHf/KXHxIZrvqwHDEtJ6lsFF2KbOcQ3m9vLet2Q3kXvpOhUJNqjUAd8lLm8D2XvQ9Le1p/XWfzzp/R36HxrKxIho7GI2vEFuN3ZooD3TDWCuBvB88sIgrVcFgDiZQ==
+    properties :
+     x : 102
+     y : 361
+     width : 117
+     height : 46
+    type : 4
+    code_elements :
+     type_code : 4
+     p_codes :
+      -
+        code : |1+
+         
+         IF Post.Link  <> "" THEN
+         	BrowserRunApp(Post.Link)
+         ELSE
+         	Error(<§$0000§>)
+         END
+         
+        type : 18
+      -
+        type : 161
+        enabled : false
+  -
+    name : BTN_NEXT
+    identifier : 0x2873c8d31e79795b
+    internal_properties : CAAAAAgAAACTmi+0/mz7JMzlmdZ8SGwmWnIp1wv37l/PX+en8wQZjK+o/XIHbt0sZibJajT/FJtCglQOPswgGNONh4XqLuowpRWVzjqSKNhNwWYa6VR3rnKUqjQN2GZ4GE2l1Xq0BQg1FkWBssOGOQdQYY1i0w0YJhDJhz6+pnahJrmrZmeIhtW/k3UGAbS/8CI7+OALhVV6py2ACrQU/XKufsXyuYOCFFfK7Bx4vGkazjsqiOlqKkUd4/kj7QK2WYOxn8mgs2RehxIWaL1PBAxB/phzMyM5lMAiW4YYuqN3zdqvJ30KveY+ZHTCB4zjyY1n9uE4W0RM2omF1vp3IfKvMhLsy1jb1QCgllj4l/C25kIsVjmofMPgNlhaz2aNoceXx2+32nC42V+L91APaEfBcBXoFWFGzvRo8Yo0sJ0Q8kO1oGAXv8yx+o8iU3XhI93L5Zex8MV1abFVmKw2OXFrJjzgTNNAMIIH4IxoQmKaPNgaViKLaok3uTNvQ0aHDpF+L0Y9HZh7qcsfvvQMH1qHDiGi2tXVfTBJibu1bqFbAtoPdxa3C5iDR1QO/QQ3zaPjjNci3SLSI69JILWYBGcoyITQgFzv8Cvpzq2t88LVmu6K4eQwO6rwCZfKGFVkbr8tT/CaYBQXDFbw/s6oWNbMczwMyEs4NOu8BDyDRd/j2apGz+HG6yzQRTv2ZVGdjEpjSfbYZQjjLDiW/x+ZgZcr77Dky4EkAWWXDI2SLO4aUbAuO/bKhbMrI5pfwHSVvQmeH1BHVqwAsdNaj+VCrOeQJe7342e6T5ZDa1fRUB/xs0xRkS33xGPEW/6Rg3f7Fp2pFxUKD0xGkEyRQrxJqBIosgLxYeLWybxXlpT4VDP+8FYh5pVdvvPF+/abkGiSW/c=
+    properties :
+     x : 224
+     y : 361
+     width : 94
+     height : 46
+    type : 4
+    code_elements :
+     type_code : 4
+     p_codes :
+      -
+        code : |1-
+         
+         HReadNext(gsQuerySource)
+         IF NOT HOut(gsQuerySource) THEN
+         	gnCurrentSubscript++
+         	gnID = {gsQuerySource + ".PostID",indItem}
+         	refreshes()
+         END
+        type : 18
+      -
+        type : 161
+        enabled : false
+  -
+    name : BTN_PREVIOUS
+    identifier : 0x2873c8d31e7a795b
+    internal_properties : CAAAAAgAAACJ6lFkcmSWifQaLKDFISKeI9QJA2NMeEoVqxNJVRfMhO9MwAd+xOCTszq48PbGYLM4xv6K97MYjbtoJzOkKruEqx4NBPoftlwhG61EQ1+qsrfurQa8s6axRtcLBORO1zOXW1cPabsdHZHQnwpc4aX2BuDX/qwWxJTLfz1QpDV/U+isyO+CcXfLcOvS8sAqk76eknl1Cw/NfibRg755kM8lukvcMftL+fAZk/ZHfihftytsxLwj+KWYUVdH4Mf3CittLZnXpYsjKLUOL3A9/lNKCO1bbY2T5a03DrZC3+MovpeYAhGsPrswWLnomoA4Kmir/NPGoQWctsfdiZpDwfhnHzs40YejEe7CUcgxih/qkaQHVJXTfOIhlOZSkBm081TSWEdVmDApVYT9KxeXff1Ewg8ctwpR+sTZf2mAJSXx/qyIrSJI5XdxnNuml0v4Ewlx0uMV8q8DVKHYxQGwHWmMNAvj5vZl6y3sTQe32J37RL0Q2ZXZjD20foDnGgAQG6hXcvX7JvlBSpAK3/ywPRMJXYPNjy2KxYbxx2eOjWEpx542P55YKlEKMRQYq8UFtQjkcC2l3qRdo3vdJUO8Izj9OGbVuLXefhd9s3s5uYcsmcxbjUUgZVyV+t5mWtQ5qjhpp+qWtuVfOQBzOikalROqrDD6uPRu2uKjmnnbSc64H7brP9fm/pxG4mMcvEzfoVKf8w6KBZTgjn3Epi12jn1yuyjRGGVLnRk2oJMPEY84wRcglWrniceuNXzkzVpVDVl1/p7KX64P8fehxlFU7VZZwMgy2pgjOIdcvQw1trvak5oAkK9+CfWZ/xllx4xEUg/LgpsxVsWen4I2WHjUvesJhsINiymY7sr96vyVvO6KKu/7fc2oTqtQ/3nvYRq9
+    properties :
+     y : 361
+     width : 94
+     height : 46
+    type : 4
+    code_elements :
+     type_code : 4
+     p_codes :
+      -
+        code : |1-
+         
+         HReadPrevious(gsQuerySource)
+         IF NOT HOut(gsQuerySource) THEN
+         	gnCurrentSubscript--
+         	gnID = {gsQuerySource + ".PostID",indItem}
+         	refreshes()
+         END
+        type : 18
+      -
+        type : 161
+        enabled : false
+  -
+    name : IMG_BckgrdButtons
+    identifier : 0x2873c8d31e77795b
+    internal_properties : CAAAAAgAAAAtGvAS9ado4A9SlKhlAxKbjDXP9x+FUNZWeY/S52cgsu31Vq+0bMXB3CVBZnyVAmJgWHD6oDtqnFkh/sHUuAZTqBUIsLgF9py76SioRF8zS96unuv2VJeBMUlnqfIcRbSxFJKeNkUf7OmK4GNSRzTwGNBEOiBxv95PZBsTLlKreaiwj89rVefJUfEKbTaN7b+hJIWnYj8zbY+bnEfM3ok617Bh/6NlOnqbYnVRfKFR9I++CJxligc2hNUgM7LEi4DtJJuf6uEOZD0mdyBHYuK9MwPtSy9fEKY32P72Weif1SjOdcl9fe/aFqFKFuZqntxZ3+v+Ra5163120ZV8W3JQ1MCeP2iqJX/cwAMW7/ek5U0Czvwzno8ZyfCklrkX8l+W1Tky620G4Hatz75J2/aLJ9z+XcM9yur3RjqdaLlEG1w8UneAwmbXJGw2jcGCqn5sjNBKBQzOCbnAoTBRvhjYQmEle4rrNcEp6KXPk7bx68kfmOl+i6j1ueRmN+ZHvkNj+Sa+5+6OzVAsNwOsjhzP3Erj2K5yHDEYQW8AFZt2clapIB56JNViUbCTARIDhPQG4s+T7Ddcf31LfxFX6IdZfUyxo+nBkqMW0gKKVO2qmYeLqENdOGDF/HFyQ2HmvEMME3cR+6CfTLEJa3GVJsO9NYYSZKwtsDR71Xqg2FYPgRMzs4sEL8lX57d8hw4MaVbbC7+n42jsBFgAQ326VJKqR1pcqejqi6vit0UvnFQTQwRVXBFwXjepyedPmA6oXL6CVHnHUCE+fHlAHboJEPnuh9wnS0oRiY6rmGhfP1rh0soYX1UfXMBVJziLFKQw84nnr1yWn7bSVAgd5rNioG9sKH1si2FtD5nkUQZUe1zhNJk2BCamKF78j54hvNf4kvYw+wSG+cVe45lcQWPDptBL7xgCP+79WHhuL2Dkq6MdJKEEs9/AwC6vQ9stsh3YCHl89sTzA646mkzAeWnJALb/zAXEfAaGYH6AlL7pBmVHFlMkwKaC
+    properties :
+     y : 361
+     width : 320
+     height : 46
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes : []
+  -
+    name : HTML_CONTENT
+    identifier : 0x2873c8d31e7b795b
+    internal_properties : CAAAAAgAAADFCwc3uoeyv9NF0EUf0wPLGBytgZkK7ZSIUarkhMaYqR6xDceuP/NirIhy2+vO9V9Ht8SxYerog+kP4x/ExKNos9hZlEFoH823Zi555L2RKcsk0iG+5sYpNu+inQnYxO2XDMu7iwNrxVT9KJobfFw/RuVpuOlz0Xc7LkkWumURSvSpzlHfX2aowtihaVyi+We+4a2oDm63scoKlmQhHjLMyTzBfnkz7p800PpUDn2zrHhwrQpbehbiiZBg6sSj82F6ndrfK4+qmvyNjwPxLj85g65qVEyB7iEbZss4MMNe4znPtfLCW/qsxxTamxZP9/Hh3vcPp0bpvQIl6Poe
+    properties :
+     y : 244
+     width : 320
+     height : 116
+    type : 23
+    code_elements :
+     type_code : 36
+     p_codes :
+      -
+        code : |1-
+         
+        type : 14
+  -
+    name : IMG_POST
+    identifier : 0x2873c8d31e7c795b
+    internal_properties : CAAAAAgAAADPLw+W8aEPVYAXOY9E0VA3NmGipehBVnvuX5RaLK0n8w18SrvWiujmO2j+q/LcxndFHT3FPj947g1eYYA3UOPNCB9Z40pDMbIj0RSW8SPikj35z/75m8WBRN4upQ202QpC/VUQYv1PI2zslwkh0xasfPZBnV7UURj6D3OwEhC8gyR7IoZvzYkuuPkIrDM//9ePaoPjPObon2/UnlugDWeF2sF2uyUGHe+20o8MbOg92ifdNnPh5AO0dfDanK4MSwYPYJIriaLTwx21Ifo0RHm3lDud0hFoAn49+2nmz4/pRSBEFVNgfZdg3Ioqklt/53YtcwuKSyDlkbM57kN+bzslWzPqdI/JnjqxODzQazQW2dIeejgTP0GdpU3LHv2F3zbE1WFm9qXhMXojoJGaPNyGxh8knSgyq6vFiYJqiGbUoYYDFkzd6QkU1Gj3g7n4sPcK6lxnX+shV6/PFoEFkuB5Icr+e0U2o+xwdM44JXfyX2brDxmmrnSXJXPiM8igxpAj4zFob7y4+6xCJ5JOz3MGMi4v71DsroxWw6diXl4a6NWz9kRMWbwxgTV0J7XN6LFQxnUGxJ1PcsCNiTBaIuFQpryQLBkLifXqEdGJQwCvCyvRdGsWuiSPOYQvSsE9Wv+sVSb1F/rlvhgCVQl4RfctcpVgvvwfGcCjzANtdGzyKDX2lSvKbnDkmRK7KiKD+bKTVJbr0GYIvR1PlMFOZi0cf62KcDBR4xaIt8Y9uRMkyySUY/g3IIDuhTagWlV2NbQ9mAMsL+qEuh7fy53SULSmUTTF2gpt3ioKrZPcNeuZLNrg39VBlng0LBWeqiQ+UbRlT3Pbduku4kwHdQF0rKw5aMxX8ARn4PbZH95YC19CoLqSsGUzlh5RqLMMds5RN1YudNBvhDgjwqrpjFaE4Q28//DKsJ28P7JApzkHHlnT058CynevranzEHJWSTCCEv2SDpAj7L3PfDg/213SYNM8VQGsPzkC541n
+    properties :
+     y : 114
+     width : 320
+     height : 128
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes : []
+  -
+    name : IMG_POSTOnly
+    identifier : 0x2873c8d31e7d795b
+    internal_properties : CAAAAAgAAAA+0sKWsNdi5pZRxAseHxph+V2EitaBl0zbJsDDpBzVQXa4MdnAn+e3iv6VPD4yDWplra48DL9x4rsesZNwMYjDnZUEPfEypBwzbyajssDEoK56GnPdLWCZr9eVufJ71g18snzczXZD62gqRUTjDltskc+4uIFhRU1wKO1dvff4LSY1QgGtqwaWH3gIQxeR0iyA6nUNCyjiD10ArWW5HdRjp6TzkgWMTXons5eiYPq7cwRkxVzHrRhaxXU5RYyM279nIQEA9iDQU+dZICLpy7qmc3DNiNwTLRKoqzUD5jQSUBrfmVFX05gE3OGLXBsSaOPk+oMp16hln++EwgvQCPQrkoj/SvS2von8M7DEkCA4GH3j9WFs82slgIPmv6jsp/2wSV79Z6Ue9xlzg+X8snjLEKiVzCk+oIGscfk3xhgFywGYdVbLeCc43/r0hQWOmnGImzdKcuPy9/hGZVuxZW0j5o731WKQYNV706DYiGmQB9bujoPCwhiABBp7MNT07Xxm+H9GuBmC7NcRFCsv6BRV5SgyIHe9xPp/Me0AFLCXXeHe3+RGF0c8Mj9v8YxybIsDSgcV4pWmi4grjxqIqiMNa1JVWG8qTe1VunadivdE0K2coJ1tJWhlmvYoURXU9tu/e0N/PmeHS0K1DGj3KfdbVrgIRTUIo7Uv9B9CsiHzWm6sK5qQqDnchiAQkbxPlo2logQR0RtrZ7BpH2NIIbPaekAcJG51Nlzeh/rPK6PrEAZZK5iDTBzGbCin+1je7KgItOnTUASnQBmLSCSoSkT5Y/P2tc5VrNUSX6D4Q1dyh8ZI32PALPJtDzMD2Mf19I6jNE1ezeZ19ot1NvbBkh5fsG4sKb6stLfKtmhLLn/zZrv84OTyo+hM4KFKNX9sm7JOKxG0tl5Bjxe3i4Ym3bFkZkexpqYr0cFvUZS6pHUrf+SIZIzR4dkswWlxVhEzPv5+aC5c/jxVQ4IEi16KtI1uyE6w2ayI6+4VpH4PUDlH
+    properties :
+     y : 114
+     width : 320
+     height : 245
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes : []
+  -
+    name : HTML_CONTENTOnly
+    identifier : 0x2873c8d31e7e795b
+    internal_properties : CAAAAAgAAAArHS9i5JDSeJy+Vbpzjka18hgE7+NPZz+JHmPFYfutQFAGix+5Mlrm7dfXHnZPRJ2FA+puQjb9gyZl95peoiVeelZjhj9Ky/feSWBsG8hLXXbv/RYXJlE+9P+03+0oi3FV5lPW5JwXgENv4O6BLKOKIuTQ1y8KNtMJ1VlryLwpIyfRt/jiCIcb+x9fos8iTdgnFr+kVhPBM6Hmr30PJ7lPsffDoGb3pfHLPvwfiHp7l+A5e3YqDtvg3nyabu4E0rLuIZmMKvq6ZrC2/bUCXht1ZABj2cSZaYfI0mVvWSK4T3W1qRnxj8VIFLH3Sv+95vSlzD9VjWt5IEF2l8w=
+    properties :
+     y : 114
+     width : 320
+     height : 245
+    type : 23
+    code_elements :
+     type_code : 36
+     p_codes :
+      -
+        code : |1-
+         
+        type : 14
+ actionbar :
+  name : ACTB_ActionBar
+  identifier : 0x2873c8d31e7f795b
+  internal_properties : CAAAAAgAAAAyv2x0eJG/gfnGfH59Vq4m7DlQF3OkiSexhly6qdLS5BxkM/C0bCSdAFx6J6e9cPZ8DpMVHOaYzHLt/Ycn6Ck90sd6hcG6mN9TwjKdvJ1TcpedxLu/I2oFbBYO0cxXjjIAQb+nq2i5fc6F5q1xWBFmop4WKLX2im0LiB92WPwKGUa1WiaLqkuqKe8YVsj9SofLtWmfW6a5qWYgm1xeVFI8Mcz0NT8jTZU7UAxRUawNvmUQr9wTjyfJ4bPzY+s4Nkgyqu6P9L5BaCx86AgU8Pb0834ZoOEMaP1+FFkPHcg8kwTba2xTB2+rvXrAWZSch5kGMmJdeDQaVa7Uue+q9/74Y73ZrnOWIQh+ftO8NJSjsYTxTnfIwIW94wOT2dA3HBsBZzMlyEsVn5F4z2eybA4hfKTLbbmhUq49aWMJJtf/NIzLaxo1/IRrv0iKei6WOzw=
+  controls : []
+  code_elements :
+   type_code : 125
+   p_codes :
+    -
+      type : 229
+      enabled : false
+    -
+      type : 239
+      enabled : false
+    -
+      type : 240
+      enabled : false
+ menu :
+  name : _Menu
+  identifier : 0x2b58399d0a2a59f9
+  internal_properties : CAAAAAgAAADgMVTORwj2Mt8z/R5WRL0mTVIMDO11ij5YdBwcO3ZAw8tWdEBL95DgWGGgMGBRKql5dANp5Vg/qpNyJvJQ8sIrr6GzC+masJIwyV5P7DpW0go2kGsf4EvdW1eqlu6V7I5EHVrMjd02cTaXwP0dbd1DSbdsd/Wxk0ScMGI7Z0eDsGOMLRfieoTYskOjcLtA7tgFoR24z+3d3zH3Bloaoqj6XKllvOzqHQUKs5ikiJtsiZpXF9leDIYykRzjnC4k4qQVjthAFpugw+diG+HfnEMv+L/rU3DRjlIiDq+0aeUP
+  options : []
+ languages :
+  - en-GB
+ popup_menus : []
+ message_bar :
+  internal_properties : CAAAAAgAAABOcfIg+z8F79UkhFYd00M2CvLldGhSxaVGPtRTodeJ8w2WdxX6rAuv3cFGlYBZw+4w3BDraPrNyWWstrvuIlghHPg3u+r36X9vU/u/SPcTFBi5ibiKmRh9VgcP
+ code_elements :
+  type_code : 1
+  p_codes :
+   -
+     code : |1+
+      PROCEDURE WIN_PostForm(LOCAL gnID is int, LOCAL gnCurrentSubscript is int, LOCAL gnTotal is int, LOCAL gsQuerySource is data source, LOCAL gsWindowSource)
+      
+   -
+     code : |1+
+      
+      refreshes()
+     type : 34
+   -
+     type : 180
+     enabled : false
+   -
+     type : 230
+     enabled : false
+   -
+     code : |1-
+      
+     type : 2
+   -
+     code : |1+
+      
+      
+     type : 11
+   -
+     code : |1+
+      
+      
+     type : 12
+   -
+     code : |1+
+      
+      
+     type : 17
+   -
+     code : |1+
+      
+      
+     type : 13
+  procedures :
+   -
+     name : refreshes
+     procedure_id : 1761972687844833627
+     type_code : 14
+     code : |1-
+      // Summary: Refreshes the information
+      
+      PROCEDURE refreshes()
+      
+      
+      HReadSeekFirst(gsQuerySource, PostID, gnID)
+      
+      
+      // Variables
+      sHTML         is string
+      
+      // Displays the information
+      
+      // Positions on the relevant post
+      HReadSeekFirst(Post,PostID,gnID)
+      IF HFound(Post) THEN
+      	
+      	// Post Title
+      	STC_POST_TITLE = Post.Title
+      	
+      	WHILE TextHeight(STC_POST_TITLE,Post.Title,tMultiline) > STC_POST_TITLE..Height 
+      		STC_POST_TITLE..FontSize -= 1
+      	END
+      	
+      	dtTPostDate is datetime  = {gsQuerySource + ".PublicationDate",indItem}
+      	STC_Date_time = DateToString(dtTPostDate..Date, "MM/DD/YYYY") + " at " + TimeToString(dtTPostDate..Time, "H:MM AP")
+      	
+      	
+      	// Switches the post to read if it was unread
+      	IF Post.Read = False THEN
+      		Post.Read = True
+      		HModify(Post)
+      	END
+      	
+      	// Displaying the title
+      	SWITCH gsWindowSource
+      		CASE "WIN_PostList":
+      			MyWindow..Title  = "All the posts "  + StringBuild("(%1/%2)", gnCurrentSubscript, gnTotal)
+      		CASE "WIN_FavoritesList":
+      			MyWindow..Title  = "All the favorites "  + StringBuild("(%1/%2)", gnCurrentSubscript, gnTotal)
+      	END
+      	
+      	//If we have an image only
+      	IF Post.Image <> "" AND Post.Description = "" THEN
+      		MyWindow..Plane = 2
+      		IMG_POSTOnly =  Post.Image
+      	END
+      	
+      	//If we have text only
+      	IF Post.Description <> "" AND Post.Image = "" THEN
+      		MyWindow..Plane = 3
+      		HTML_CONTENTOnly = postHTML(Post.Description)
+      	END
+      	
+      	//If we have text and an image
+      	IF Post.Description <> "" AND Post.Image <> "" THEN
+      		MyWindow..Plane = 1
+      		IMG_POST =  Post.Image
+      		HTML_CONTENT = postHTML(Post.Description)
+      	END
+      	
+      	//If no content >> display an info 	
+      	IF Post.Image = "" AND Post.Description = "" THEN
+      		MyWindow..Plane = 3
+      		sHTML = "Click the 'Read next' button to go to the Web page."
+      		HTML_CONTENTOnly = postHTML(sHTML)
+      	END
+      	
+      	
+      	// Enables/Disables the button according to the positioning
+      	IF gnCurrentSubscript = 1 THEN
+      		BTN_PREVIOUS..State = Grayed
+      	ELSE
+      		BTN_PREVIOUS..State = Active
+      	END
+      	
+      	IF gnCurrentSubscript = gnTotal THEN
+      		BTN_NEXT..State = Grayed
+      	ELSE
+      		BTN_NEXT..State = Active
+      	END
+      	
+      	// This post has a link
+      	IF Post.Link <> "" THEN
+      		BTN_VIEW..State = Active
+      	ELSE
+      		BTN_VIEW..State = Grayed
+      	END
+      	
+      	
+      	// Favorites mode?
+      	IF gsWindowSource = "WIN_FavoritesList" THEN
+      		
+      		IMG_FAVORITE..Visible = True
+      		IMG_NOFAVORITE..Visible = False
+      		
+      		
+      	ELSE
+      		
+      		// Favorite post?
+      		IF Post.Favorites = True THEN
+      			IMG_FAVORITE..Visible = True
+      			IMG_NOFAVORITE..Visible = False
+      		ELSE
+      			IMG_NOFAVORITE..Visible = True 
+      			IMG_FAVORITE..Visible = False
+      			
+      		END	
+      	END
+      ELSE
+      	Error("Post not found")
+      	Close()
+      END
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAADeQcze1Ixqfwn6yOfjwsQ7IKxuiqMzbTygTLeVXFH8DB0WqXgSKvkzRoO0/Z27dfrh8D+BLYmMenjdtZezotw6hJf2mE4Gv6OctA==
+  original_name : FEN_Fenêtre1
+resources :
+ string_res :
+  identifier : 0x1b5835a70062e3ef
+  internal_properties : CAAAAAgAAACyXVFaObH4lOGSEHJoZf1MD49w+XTw2LScZCP/urkWFwy+HYJdyQ3umA==
+  strings :
+   -
+     text :
+      en-GB : No link for this post
+     index : 0
+custom_note :
+ internal_properties : CAAAAAgAAAC68/W0/adbG0nFCRhrE42B5HRnbDzVHaz86sSQyxlBk7I=
+rad :
+ internal_properties : CAAAAAgAAABoAN7PLpwJW3EiA7WVZdCA5EwrCA1rvutcDHooMWKe
